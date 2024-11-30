@@ -60,6 +60,66 @@ namespace SivsContentPack
         }
     }
 
+
+    public class CorruptedSpikeImpact : EffectFactory
+    {
+        protected override void LoadAssets(ref EffectDef effectDef)
+        {
+            effectDef = new EffectDef();
+            this.prefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("CorruptedSpikeImpact");
+            effectDef.prefab = this.prefab;
+        }
+        protected override void HandleMaterials()
+        {
+
+        }
+    }
+    public class TransformationComplete : EffectFactory
+    {
+        protected override void LoadAssets(ref EffectDef effectDef)
+        {
+            effectDef = new EffectDef();
+            this.prefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("TransformationCompleteFX");
+            effectDef.prefab = this.prefab;
+        }
+        protected override void HandleMaterials()
+        {
+
+        }
+    }
+
+    public class CorruptionTakesHold : EffectFactory
+    {
+        protected override void LoadAssets(ref EffectDef effectDef)
+        {
+            effectDef = new EffectDef();
+            this.prefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("CorruptionTakesHoldFX");
+            effectDef.prefab = this.prefab;
+        }
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matCorruptionTakesHold");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Intersection Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCorruptionTakesHold2");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Intersection Remap");
+        }
+    }
+
+    public class CorruptionLifts : EffectFactory
+    {
+        protected override void LoadAssets(ref EffectDef effectDef)
+        {
+            effectDef = new EffectDef();
+            this.prefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("CorruptionLiftsFX");
+            effectDef.prefab = this.prefab;
+        }
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matCorruptionTakesHold");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Intersection Remap");
+        }
+    }
+
     public class GoldStarProc : EffectFactory
     {
         protected override void LoadAssets(ref EffectDef effectDef)

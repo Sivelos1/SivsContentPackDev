@@ -478,13 +478,15 @@
     "FALSESON_THUNDERAURA_REACTION_2": "I can feel it... Her power flows through you, cretin.",
     "FALSESON_THUNDERAURA_REACTION_3": "You will return your stolen power, cretin.",
 
-    "ITEM_LUNARROSARY_NAME": "First Design",
+    "ITEM_LUNARROSARY_NAME": "Anathemic Rosary",
     "ITEM_LUNARROSARY_PICKUP": "Wield the power of a Twisted Scavenger.",
-    "ITEM_LUNARROSARY_DESCRIPTION": "Haven't really figured out what this does yet.",
+    "ITEM_LUNARROSARY_DESCRIPTION": "Once every <style=cIsUtility>5 seconds <style=cStack>(-50% per stack)</style></style>, gain a stack of <style=cLunarObjective>Lunar Corruption</style>, up to a <style=cIsDamage>maximum of 4</style>. Your maximum corruption increases by <style=cIsUtility>1 <style=cStack>(+1 per stack)</style> for each Lunar item you have</style>. Reaching maximum corruption has you undergo <style=cLunarObjective>Faithful Awakening</style>, converting all stacks of <style=cLunarObjective>Lunar Corruption</style> into a powerful buff. Faithful Awakening degrades at a rate of one stack every <style=cIsUtility>1 <style=cStack>(+1 per stack)</style> second</style>.",
     "ITEM_LUNARROSARY_LORE": "Swear on skibidi",
 
+    "LUNARROSARY_CORRUPTION_NAME": "Awakened {0}",
+
     "BROTHER_LUNARROSARY_REACTION_1": "Traitorous vermin.",
-    "BROTHER_LUNARROSARY_REACTION_2": "Feel the wrath of your rightful god, vermin.",
+    "BROTHER_LUNARROSARY_REACTION_2": "This mistake shall be your last.",
     "BROTHER_LUNARROSARY_REACTION_3": "Die in disgrace.",
 
     "FALSESON_LUNARROSARY_REACTION_1": "Those beads... You dare bring those before me!?",

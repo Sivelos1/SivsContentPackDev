@@ -687,6 +687,51 @@ namespace SivsContentPack.Config
                 public static float orbiterDamageCoefficient = 4.5f;
                 public static float orbiterRechargeInterval = 4f;
             }
+
+            public static class LunarRosary
+            {
+                private static string text = "Anathemic Rosary";
+                public static ConfigEntry<bool> enabled = config.Bind<bool>(itemEnabledSection, text, true, "Toggle to prevent this item from appearing.");
+
+                public static int baseCorruptionCap = 4;
+                public static int corruptionCapPerLunarItem = 1;
+                public static int corruptionCapPerLunarItemStack = 1;
+                public static float corruptionInterval = 5f;
+                public static float corruptionDegradeTime = 1f;
+                public static float corruptionDegradeTimeStack = 1f;
+
+                public static float transformationTimer = 2f;
+
+                public static class LunarCorruption
+                {
+                    public static float healthPenalty = 5f;
+                    public static float damagePenalty = 0.05f;
+                    public static float movementPenalty = 0.05f;
+
+                    public static float cooldownPenalty = 0.25f;
+                    public static float experienceGainPenalty = 0.25f;
+                }
+
+                public static class FullyCorrupted
+                {
+                    public static float healthBonus = 0.25f;
+                    public static float damageBonus = 0.25f;
+                    public static float luckBonus = 0.25f;
+                    public static float movementBonus = 0.1f;
+
+                    public static float experienceGainBonus = 0.5f;
+                    public static float cooldownBonus = 0.1f;
+
+                    public static float spikeDamageCoefficient = 2.5f;
+                    public static float spikeCooldown = 4f;
+                    public static float spikeInterval = 0.15f;
+
+                    public static int spikeCount = 5;
+                    public static float spikeAngleInterval = 10f;
+
+                }
+
+            }
         }
         public static class Elites
         {

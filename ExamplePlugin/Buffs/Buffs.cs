@@ -410,6 +410,239 @@ namespace SivsContentPack
             return orig.Invoke(self, observerTeam);
         }
     }
+    public class LunarCorruption : BuffFactory
+    {
+        protected override void LoadAssets(ref BuffDef buffDef)
+        {
+            buffDef = Assets.AssetBundles.Items.LoadAsset<BuffDef>("bdLunarCorruption");
+        }
+        protected override void HandleMaterials()
+        {
+
+        }
+        protected override void Hooks()
+        {
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.CharacterMaster.GiveExperience += CharacterMaster_GiveExperience;
+        }
+
+        private void CharacterMaster_GiveExperience(On.RoR2.CharacterMaster.orig_GiveExperience orig, CharacterMaster self, ulong amount)
+        {
+            GameObject body = self.GetBodyObject();
+            if (body != null)
+            {
+                CharacterBody cb = body.GetComponent<CharacterBody>();
+                if (cb != null)
+                {
+                    int stacks = cb.GetBuffCount(Content.Buffs.LunarCorruption);
+                    if (stacks > 0)
+                    {
+                        amount *= (ulong)(1f - (Configuration.Items.LunarRosary.LunarCorruption.experienceGainPenalty * stacks));
+                    }
+                }
+            }
+            orig.Invoke(self, amount);
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.HasBuff(Content.Buffs.LunarCorruption))
+            {
+                int stacks = sender.GetBuffCount(Content.Buffs.LunarCorruption);
+                args.baseCurseAdd += (stacks * (Configuration.Items.LunarRosary.LunarCorruption.healthPenalty+1))/sender.maxHealth;
+                args.moveSpeedReductionMultAdd += stacks * Configuration.Items.LunarRosary.LunarCorruption.movementPenalty;
+                args.damageMultAdd -= stacks * Configuration.Items.LunarRosary.LunarCorruption.movementPenalty;
+
+                args.primaryCooldownMultAdd += Configuration.Items.LunarRosary.LunarCorruption.cooldownPenalty * stacks;
+                args.secondaryCooldownMultAdd += Configuration.Items.LunarRosary.LunarCorruption.cooldownPenalty * stacks;
+                args.utilityCooldownMultAdd += Configuration.Items.LunarRosary.LunarCorruption.cooldownPenalty * stacks;
+                args.specialCooldownMultAdd += Configuration.Items.LunarRosary.LunarCorruption.cooldownPenalty * stacks;
+            }
+        }
+    }
+    public class FullyCorrupted : BuffFactory
+    {
+        private static Material corruptionOverlay;
+        protected override void LoadAssets(ref BuffDef buffDef)
+        {
+            buffDef = Assets.AssetBundles.Items.LoadAsset<BuffDef>("bdFullyCorrupted");
+        }
+        protected override void HandleMaterials()
+        {
+            corruptionOverlay = Assets.AssetBundles.Items.LoadAsset<Material>("matCorruptionOverlay");
+            Materials.SubmitMaterialFix(corruptionOverlay, "Hopoo Games/FX/Cloud Remap");
+        }
+        protected override void Hooks()
+        {
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.CharacterMaster.GiveExperience += CharacterMaster_GiveExperience;
+            On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+            On.RoR2.CharacterModel.UpdateRendererMaterials += CharacterModel_UpdateRendererMaterials;
+            On.RoR2.CharacterBody.OnBuffFinalStackLost += CharacterBody_OnBuffFinalStackLost;
+            On.RoR2.CharacterBody.OnBuffFirstStackGained += CharacterBody_OnBuffFirstStackGained;
+        }
+
+        private void CharacterMaster_GiveExperience(On.RoR2.CharacterMaster.orig_GiveExperience orig, CharacterMaster self, ulong amount)
+        {
+            GameObject body = self.GetBodyObject();
+            if (body != null)
+            {
+                CharacterBody cb = body.GetComponent<CharacterBody>();
+                if (cb != null)
+                {
+                    int stacks = cb.GetBuffCount(Content.Buffs.LunarCorruption);
+                    if (stacks > 0)
+                    {
+                        amount *= (ulong)(1f + (Configuration.Items.LunarRosary.FullyCorrupted.experienceGainBonus * stacks));
+                    }
+                }
+            }
+            orig.Invoke(self, amount);
+        }
+
+        private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        {
+            orig.Invoke(self);
+            GameObject obj = self.GetBodyObject();
+            if (obj != null)
+            {
+                CharacterBody cb = obj.GetComponent<CharacterBody>();
+                if (cb != null)
+                {
+                    if (cb.HasBuff(Content.Buffs.FullyCorrupted))
+                    {
+                        LunarRosary.LunarRosaryController lrc = obj.GetComponent<LunarRosary.LunarRosaryController>();
+                        if (lrc != null)
+                        {
+                            int stacks = lrc.corruptionCap;
+                            float luckBonus = Configuration.Items.LunarRosary.FullyCorrupted.luckBonus * stacks;
+                            self.luck += luckBonus;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.HasBuff(Content.Buffs.FullyCorrupted))
+            {
+                LunarRosary.LunarRosaryController lrc = sender.GetComponent<LunarRosary.LunarRosaryController>();
+                if (lrc != null)
+                {
+                    int stacks = lrc.corruptionCap;
+                    args.damageMultAdd += Configuration.Items.LunarRosary.FullyCorrupted.damageBonus * stacks;
+                    args.moveSpeedMultAdd += Configuration.Items.LunarRosary.FullyCorrupted.movementBonus * stacks;
+                    args.healthMultAdd += Configuration.Items.LunarRosary.FullyCorrupted.healthBonus * stacks;
+                    args.primaryCooldownMultAdd -= Configuration.Items.LunarRosary.FullyCorrupted.cooldownBonus * stacks;
+                    args.secondaryCooldownMultAdd -= Configuration.Items.LunarRosary.FullyCorrupted.cooldownBonus * stacks;
+                    args.utilityCooldownMultAdd -= Configuration.Items.LunarRosary.FullyCorrupted.cooldownBonus * stacks;
+                    args.specialCooldownMultAdd -= Configuration.Items.LunarRosary.FullyCorrupted.cooldownBonus * stacks;
+                }
+            }
+        }
+
+        private void CharacterBody_OnBuffFirstStackGained(On.RoR2.CharacterBody.orig_OnBuffFirstStackGained orig, CharacterBody self, BuffDef buffDef)
+        {
+            orig.Invoke(self, buffDef);
+            if(buffDef == Content.Buffs.FullyCorrupted)
+            {
+                CharacterMaster cmaster = self.master;
+                if (cmaster != null)
+                {
+                    LunarRosary.LunarRosaryController lrc = self.GetComponent<LunarRosary.LunarRosaryController>();
+                    if(lrc != null)
+                    {
+                        int stacks = lrc.corruptionCap;
+                        float luckBonus = Configuration.Items.LunarRosary.FullyCorrupted.luckBonus * stacks;
+                        cmaster.luck += luckBonus;
+                    }
+                }
+                ModelLocator ml = self.modelLocator;
+                if (ml != null)
+                {
+                    Transform m = ml.modelTransform;
+                    if (m != null)
+                    {
+                        CharacterModel cm = m.GetComponent<CharacterModel>();
+                        if (cm != null)
+                        {
+                            cm.materialsDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CharacterBody_OnBuffFinalStackLost(On.RoR2.CharacterBody.orig_OnBuffFinalStackLost orig, CharacterBody self, BuffDef buffDef)
+        {
+            orig.Invoke(self, buffDef);
+            if(buffDef == Content.Buffs.FullyCorrupted)
+            {
+                float scale = 1f;
+                ModelLocator ml = self.modelLocator;
+                if (ml != null)
+                {
+                    scale = ml.modelScaleCompensation;
+                }
+                EffectData ed = new EffectData()
+                {
+                    origin = self.coreTransform.position,
+                    start = self.coreTransform.position,
+                    rootObject = self.gameObject,
+                    scale = scale,
+                    rotation = Quaternion.identity,
+                };
+                EffectManager.SpawnEffect(Content.Effects.CorruptionLifts.prefab, ed, true);
+                CharacterMaster cmaster = self.master;
+                if (cmaster != null)
+                {
+                    LunarRosary.LunarRosaryController lrc = self.GetComponent<LunarRosary.LunarRosaryController>();
+                    if (lrc != null)
+                    {
+                        int stacks = lrc.corruptionCap;
+                        float luckBonus = Configuration.Items.LunarRosary.FullyCorrupted.luckBonus * stacks;
+                        cmaster.luck -= luckBonus;
+                    }
+                }
+                if (ml != null)
+                {
+                    Transform m = ml.modelTransform;
+                    if (m != null)
+                    {
+                        CharacterModel cm = m.GetComponent<CharacterModel>();
+                        if (cm != null)
+                        {
+                            cm.materialsDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void CharacterModel_UpdateRendererMaterials(On.RoR2.CharacterModel.orig_UpdateRendererMaterials orig, CharacterModel self, Renderer renderer, Material defaultMaterial, bool ignoreOverlays)
+        {
+            orig.Invoke(self, renderer, defaultMaterial, ignoreOverlays);
+            CharacterBody cb = self.body;
+            if (cb)
+            {
+                bool flag = cb.HasBuff(Content.Buffs.FullyCorrupted);
+                if (flag)
+                {
+                    if (self.visibility == VisibilityLevel.Visible)
+                    {
+                        if (!ignoreOverlays)
+                        {
+                            Material[] array = renderer.sharedMaterials;
+                            ArrayUtils.ArrayAppend<Material>(ref array, in corruptionOverlay);
+                            renderer.sharedMaterials = array;
+                        }
+                    }
+                }
+            }
+        }
+    }
     public class EliteTankArmorBonus : BuffFactory
     {
         protected override void LoadAssets(ref BuffDef buffDef)

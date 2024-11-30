@@ -12,7 +12,6 @@ using RoR2.Projectile;
 using UnityEngine.AddressableAssets;
 using System.Runtime.CompilerServices;
 using EntityStates;
-using Mono.Security.X509.Extensions;
 using SivsContentPack.CustomEntityStates.MiniConstructs;
 using System.Linq;
 using HarmonyLib;

@@ -13,7 +13,6 @@ using RoR2.Projectile;
 using UnityEngine.AddressableAssets;
 using System.Runtime.CompilerServices;
 using EntityStates;
-using Mono.Security.X509.Extensions;
 using SivsContentPack.CustomEntityStates.MiniConstructs;
 using System.Linq;
 using RoR2.Navigation;
@@ -21,6 +20,7 @@ using HarmonyLib;
 using RoR2.CharacterSpeech;
 using UnityEngine.Networking;
 using HG;
+using UnityEngine.UIElements;
 
 namespace SivsContentPack.Items
 {
@@ -2276,6 +2276,1055 @@ localScale = new Vector3(1F, 1F, 1F)
                 }
             }
 
+        }
+    }
+
+    internal class LunarRosary : ItemFactory
+    {
+        private static CharacterSpeechController.SpeechInfo[] brotherLunarRosaryReactions = new CharacterSpeechController.SpeechInfo[]
+        {
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "BROTHER_LUNARROSARY_REACTION_1",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 10f,
+            },
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "BROTHER_LUNARROSARY_REACTION_2",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 10f,
+            },
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "BROTHER_LUNARROSARY_REACTION_3",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 10f,
+            },
+        };
+        private static CharacterSpeechController.SpeechInfo[] falseSonLunarRosaryReactions = new CharacterSpeechController.SpeechInfo[]
+        {
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "FALSESON_LUNARROSARY_REACTION_1",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 50f,
+            },
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "FALSESON_LUNARROSARY_REACTION_2",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 50f,
+            },
+            new CharacterSpeechController.SpeechInfo()
+            {
+                token = "FALSESON_LUNARROSARY_REACTION_3",
+                duration = 1f,
+                maxWait = 0.1f,
+                priority = 50f,
+            },
+        };
+        private GameObject spikeDisplay;
+        private GameObject spikeClusterDisplay;
+        protected override void LoadAssets(ref ItemDef itemDef)
+        {
+            itemDef = Assets.AssetBundles.Items.LoadAsset<ItemDef>("LunarRosary");
+            this.displayPrefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("DisplayLunarRosary");
+            spikeDisplay = Assets.AssetBundles.Items.LoadAsset<GameObject>("DisplayLunarRosarySpike");
+            spikeClusterDisplay = Assets.AssetBundles.Items.LoadAsset<GameObject>("DisplayLunarRosarySpikeCluster");
+            Content.Misc.CorruptedSpike = Assets.AssetBundles.Items.LoadAsset<GameObject>("CorruptedSpikeProjectile");
+            ContentAddition.AddProjectile(Content.Misc.CorruptedSpike);
+        }
+
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matRosary");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matShinyPearl");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matPearl");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matLesserPearl");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matRosarySpike");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matRosarySpikeAura");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+        }
+        protected override bool CheckIfEnabled()
+        {
+            return Configuration.Items.LunarRosary.enabled.Value;
+        }
+        protected override void RegisterItemDisplayRules(ref ItemDisplayRuleDict itemDisplayRules)
+        {
+            itemDisplayRules.Add("CommandoBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.29932F, 0.05313F),
+localAngles = new Vector3(351.7025F, 0F, 0F),
+localScale = new Vector3(0.32308F, 0.32308F, 0.32308F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.05479F, 0.22958F, 0.10909F),
+localAngles = new Vector3(317.3783F, 22.77395F, 329.7679F),
+localScale = new Vector3(0.13249F, 0.13249F, 0.13249F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.12966F, 0.37568F, 0.14307F),
+localAngles = new Vector3(316.8698F, 322.9687F, 15.22034F),
+localScale = new Vector3(0.07808F, 0.07808F, 0.13063F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.09724F, 0.21349F, -0.05548F),
+localAngles = new Vector3(352.4235F, 235.1615F, 50.42577F),
+localScale = new Vector3(0.14018F, 0.14018F, 0.06659F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.06051F, 0.23362F, -0.05013F),
+localAngles = new Vector3(295.4875F, 230.3694F, -0.00003F),
+localScale = new Vector3(0.19795F, 0.19795F, 0.10521F)
+                }
+            ]);
+            itemDisplayRules.Add("HuntressBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0.00001F, 0.18579F, 0.0579F),
+localAngles = new Vector3(347.3811F, 0F, 0F),
+localScale = new Vector3(0.26056F, 0.26056F, 0.26056F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.08949F, 0.25341F, -0.00596F),
+localAngles = new Vector3(315.2379F, 49.19424F, 347.7103F),
+localScale = new Vector3(0.0675F, 0.0675F, 0.0675F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.11448F, 0.21847F, 0.0738F),
+localAngles = new Vector3(336.2402F, 302.8776F, 57.84657F),
+localScale = new Vector3(0.10469F, 0.10469F, 0.10469F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.04963F, 0.21554F, -0.08334F),
+localAngles = new Vector3(0F, 210.778F, 0F),
+localScale = new Vector3(0.10078F, 0.10078F, 0.05397F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.05274F, 0.16045F, -0.0781F),
+localAngles = new Vector3(13.34581F, 208.7642F, 0F),
+localScale = new Vector3(0.21613F, 0.21613F, 0.07919F)
+                }
+            ]);
+            itemDisplayRules.Add("Bandit2Body", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.32967F, 0.03358F),
+localAngles = new Vector3(343.7136F, 0F, 0F),
+localScale = new Vector3(0.22006F, 0.22006F, 0.22006F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.07564F, 0.1865F, 0.01885F),
+localAngles = new Vector3(293.6479F, 58.7776F, 15.87671F),
+localScale = new Vector3(0.09263F, 0.09263F, 0.07118F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(0.21032F, 0.33662F, -0.05869F),
+localAngles = new Vector3(327.4003F, 103.192F, 295.8055F),
+localScale = new Vector3(0.07499F, 0.07499F, 0.05607F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.04047F, 0.0694F, 0.0289F),
+localAngles = new Vector3(356.6984F, 289.7023F, 328.5531F),
+localScale = new Vector3(0.10804F, 0.10804F, 0.05644F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.05492F, 0.08636F, 0.05805F),
+localAngles = new Vector3(342.231F, 315.6877F, 189.2509F),
+localScale = new Vector3(0.16024F, 0.16024F, 0.05575F)
+                }
+            ]);
+            itemDisplayRules.Add("ToolbotBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 1.72239F, 1.56572F),
+localAngles = new Vector3(320.8244F, 0F, 0F),
+localScale = new Vector3(2.07539F, 2.07539F, 2.07539F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(2.28165F, 2.22637F, 2.21485F),
+localAngles = new Vector3(314.9049F, 28.79628F, 328.5763F),
+localScale = new Vector3(0.79028F, 0.79028F, 0.79028F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(-0.85371F, 0.90992F, 1.21959F),
+localAngles = new Vector3(332.4263F, 341.4394F, 352.0926F),
+localScale = new Vector3(1F, 1F, 0.43674F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(1.24139F, 2.86282F, -0.28771F),
+localAngles = new Vector3(289.2419F, 165.8107F, 193.4261F),
+localScale = new Vector3(1F, 1F, 0.69684F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(1.33298F, 2.68114F, -0.3821F),
+localAngles = new Vector3(307.1765F, 180F, 180F),
+localScale = new Vector3(1F, 1F, 1F)
+                }
+            ]);
+            itemDisplayRules.Add("MageBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.23026F, 0.01865F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(0.24754F, 0.24754F, 0.24754F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.09536F, 0.23914F, 0.06202F),
+localAngles = new Vector3(304.932F, 314.9489F, 21.68169F),
+localScale = new Vector3(0.0836F, 0.0836F, 0.0836F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "HeadCenter",
+localPos = new Vector3(0.01873F, 0.00213F, 0.07702F),
+localAngles = new Vector3(330.9327F, 345.2711F, 17.15649F),
+localScale = new Vector3(0.09908F, 0.09908F, 0.06788F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "HeadCenter",
+localPos = new Vector3(-0.04384F, 0.09473F, -0.07721F),
+localAngles = new Vector3(312.2535F, 298.6906F, 0F),
+localScale = new Vector3(0.1242F, 0.1242F, 0.05496F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "HeadCenter",
+localPos = new Vector3(-0.07484F, 0.00006F, -0.06443F),
+localAngles = new Vector3(25.25372F, 289.8474F, 0F),
+localScale = new Vector3(0.11163F, 0.11163F, 0.05222F)
+                }
+            ]);
+            itemDisplayRules.Add("TreebotBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "PlatformBase",
+localPos = new Vector3(0F, 0.45623F, 0.19257F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(1F, 1F, 1F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "WeaponPlatform",
+localPos = new Vector3(0.11892F, -0.17966F, 0.36089F),
+localAngles = new Vector3(324.1975F, 50.6364F, 324.5071F),
+localScale = new Vector3(0.13382F, 0.13382F, 0.13382F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "FlowerBase",
+localPos = new Vector3(0.51691F, 0.26795F, 0.24588F),
+localAngles = new Vector3(316.4033F, 29.13559F, 338.9745F),
+localScale = new Vector3(0.66319F, 0.66319F, 0.46448F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "WeaponPlatform",
+localPos = new Vector3(0.08318F, -0.30738F, 0.46946F),
+localAngles = new Vector3(1.16341F, 32.03942F, 0F),
+localScale = new Vector3(0.13584F, 0.13584F, 0.13584F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "WeaponPlatform",
+localPos = new Vector3(0.00001F, -0.32F, 0.51912F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(0.21855F, 0.21855F, 0.21855F)
+                }
+            ]);
+            itemDisplayRules.Add("LoaderBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.24851F, 0.04685F),
+localAngles = new Vector3(344.7265F, 0F, 0F),
+localScale = new Vector3(0.25468F, 0.25468F, 0.25468F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.03278F, 0.17933F, 0.10628F),
+localAngles = new Vector3(284.6305F, 0F, 0F),
+localScale = new Vector3(0.11309F, 0.11309F, 0.11309F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.1647F, 0.18422F, 0.15986F),
+localAngles = new Vector3(338.5815F, 325.5822F, 27.00249F),
+localScale = new Vector3(0.1958F, 0.1958F, 0.1958F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.04091F, 0.18637F, -0.05363F),
+localAngles = new Vector3(316.807F, 217.337F, 0F),
+localScale = new Vector3(0.09604F, 0.09604F, 0.09604F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.00927F, 0.13428F, -0.05437F),
+localAngles = new Vector3(334.7329F, 189.6796F, 0F),
+localScale = new Vector3(0.13079F, 0.13079F, 0.07813F)
+                }
+            ]);
+            itemDisplayRules.Add("MercBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.21358F, 0.03155F),
+localAngles = new Vector3(350.8091F, 0F, 0F),
+localScale = new Vector3(0.27545F, 0.27545F, 0.27545F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(-0.0976F, 0.18281F, 0.10183F),
+localAngles = new Vector3(328.0219F, 304.1216F, 54.98098F),
+localScale = new Vector3(0.08413F, 0.08413F, 0.08413F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(0.06394F, 0.13826F, 0.16692F),
+localAngles = new Vector3(344.0566F, 15.43898F, 355.6617F),
+localScale = new Vector3(0.14783F, 0.14783F, 0.14783F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(0.07829F, 0.1515F, -0.0386F),
+localAngles = new Vector3(0F, 150.0267F, 0F),
+localScale = new Vector3(0.12958F, 0.12958F, 0.05132F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(0.05069F, 0.11605F, -0.02546F),
+localAngles = new Vector3(20.46457F, 136.4384F, 0F),
+localScale = new Vector3(0.08774F, 0.08774F, 0.05513F)
+                }
+            ]);
+            itemDisplayRules.Add("CaptainBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.30511F, 0.02379F),
+localAngles = new Vector3(343.1269F, 0F, 0F),
+localScale = new Vector3(0.3168F, 0.3168F, 0.3168F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(-0.0518F, 0.21418F, -0.02197F),
+localAngles = new Vector3(314.1575F, 245.8817F, 121.9659F),
+localScale = new Vector3(0.08736F, 0.08736F, 0.10571F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.0894F, 0.19731F, 0.1114F),
+localAngles = new Vector3(299.449F, 0F, 0F),
+localScale = new Vector3(0.13984F, 0.13984F, 0.13984F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.07882F, 0.08696F, 0.01883F),
+localAngles = new Vector3(0F, 283.4391F, 0F),
+localScale = new Vector3(0.07885F, 0.07885F, 0.03869F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.08606F, 0.12547F, 0.01492F),
+localAngles = new Vector3(338.5572F, 297.7446F, 0F),
+localScale = new Vector3(0.11971F, 0.11971F, 0.07463F)
+                }
+            ]);
+            itemDisplayRules.Add("CrocoBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 1.77014F, -0.00007F),
+localAngles = new Vector3(0.24779F, 180F, 0F),
+localScale = new Vector3(4.54401F, 4.54401F, 4.54401F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(1.01495F, 1.34799F, 0.90935F),
+localAngles = new Vector3(0F, 24.37309F, 0F),
+localScale = new Vector3(1F, 1F, 1F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "UpperArmR",
+localPos = new Vector3(1.67529F, 0.0002F, -0.03445F),
+localAngles = new Vector3(0F, 94.6008F, 0F),
+localScale = new Vector3(1F, 1F, 1F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.56219F, 1.03946F, -0.17241F),
+localAngles = new Vector3(11.95013F, 252.9635F, 0F),
+localScale = new Vector3(1F, 1F, 1F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.74123F, 1.52794F, 0.08434F),
+localAngles = new Vector3(344.4026F, 249.9622F, 0F),
+localScale = new Vector3(1F, 1F, 1F)
+                }
+            ]);
+            itemDisplayRules.Add("RailgunnerBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,
+                    childName = "Head",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "GunScope",
+localPos = new Vector3(-0.03537F, -0.14378F, 0.15895F),
+localAngles = new Vector3(75.6366F, 253.8255F, 254.3058F),
+localScale = new Vector3(0.14185F, 0.14185F, 0.07938F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.08285F, 0.08579F, 0.01455F),
+localAngles = new Vector3(0F, 309.4615F, 0F),
+localScale = new Vector3(0.16196F, 0.16196F, 0.07152F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.06843F, 0.12293F, 0.0487F),
+localAngles = new Vector3(0F, 320.2531F, 0F),
+localScale = new Vector3(0.0938F, 0.0938F, 0.042F)
+                }
+            ]);
+            itemDisplayRules.Add("VoidSurvivorBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.11896F, 0.025F),
+localAngles = new Vector3(352.6548F, 0F, 0F),
+localScale = new Vector3(0.39029F, 0.39029F, 0.39029F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.01438F, 0.20578F, 0.02591F),
+localAngles = new Vector3(275.1245F, 180F, 180F),
+localScale = new Vector3(0.1162F, 0.1162F, 0.07737F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "UpperArmR",
+localPos = new Vector3(0.11695F, -0.17536F, 0.03149F),
+localAngles = new Vector3(55.37165F, 74.92812F, -0.00001F),
+localScale = new Vector3(0.14369F, 0.14369F, 0.08742F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.09496F, -0.00001F, -0.00703F),
+localAngles = new Vector3(0F, 265.7604F, 0F),
+localScale = new Vector3(0.12096F, 0.12096F, 0.08002F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.06021F, -0.00001F, -0.0952F),
+localAngles = new Vector3(0F, 212.3106F, 0F),
+localScale = new Vector3(0.16292F, 0.16292F, 0.10333F)
+                }
+            ]);
+            itemDisplayRules.Add("SeekerBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.21953F, -0.03559F),
+localAngles = new Vector3(347.7773F, 0F, 0F),
+localScale = new Vector3(0.21058F, 0.21058F, 0.21058F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(0.02698F, 0.16801F, 0.10556F),
+localAngles = new Vector3(308.1066F, 26.782F, 338.3388F),
+localScale = new Vector3(0.1039F, 0.1039F, 0.1039F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Pack",
+localPos = new Vector3(-0.24872F, 0.1693F, -0.19048F),
+localAngles = new Vector3(321.6926F, 261.1462F, 104.1057F),
+localScale = new Vector3(0.1455F, 0.1455F, 0.1455F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.04936F, 0F, 0.042F),
+localAngles = new Vector3(18.19776F, 310.3912F, 0F),
+localScale = new Vector3(0.12705F, 0.12705F, 0.06817F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.0613F, 0F, -0.00502F),
+localAngles = new Vector3(18.57876F, 265.3208F, 0F),
+localScale = new Vector3(0.12852F, 0.12852F, 0.06626F)
+                }
+            ]);
+            itemDisplayRules.Add("FalseSonBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(0F, 0.21459F, 0F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(0.6318F, 0.6318F, 0.6318F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(-0.1378F, 0.38236F, 0.17482F),
+localAngles = new Vector3(331.032F, 314.1856F, 26.48661F),
+localScale = new Vector3(0.15506F, 0.15506F, 0.12539F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.19748F, 0.40657F, 0.09292F),
+localAngles = new Vector3(305.1462F, 288.9443F, 67.22876F),
+localScale = new Vector3(0.3077F, 0.3077F, 0.3077F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.08309F, 0.1854F, -0.07736F),
+localAngles = new Vector3(8.05662F, 227.0464F, 0F),
+localScale = new Vector3(0.19519F, 0.19519F, 0.11601F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.0822F, 0.23182F, -0.10539F),
+localAngles = new Vector3(347.7261F, 196.3389F, 0F),
+localScale = new Vector3(0.23804F, 0.23804F, 0.11571F)
+                }
+            ]);
+            itemDisplayRules.Add("ChefBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Chest",
+localPos = new Vector3(-0.07539F, 0.11829F, 0F),
+localAngles = new Vector3(273.694F, 90.00005F, -0.00005F),
+localScale = new Vector3(0.45795F, 0.45795F, 0.45795F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Head",
+localPos = new Vector3(-0.33202F, 0.08753F, 0.1375F),
+localAngles = new Vector3(320.6743F, 309.9423F, 37.11824F),
+localScale = new Vector3(0.11429F, 0.11429F, 0.11429F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeClusterDisplay,childName = "Chest",
+localPos = new Vector3(-0.24761F, 0.08419F, 0.19288F),
+localAngles = new Vector3(331.261F, 282.7231F, 64.84608F),
+localScale = new Vector3(0.26499F, 0.26499F, 0.16952F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.17232F, -0.12595F, -0.07713F),
+localAngles = new Vector3(58.51849F, 180F, 180F),
+localScale = new Vector3(0.09037F, 0.09037F, 0.04231F)
+                },
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = spikeDisplay,childName = "Head",
+localPos = new Vector3(-0.19213F, -0.01801F, -0.08082F),
+localAngles = new Vector3(12.56561F, 180F, 180F),
+localScale = new Vector3(0.22007F, 0.22007F, 0.09468F)
+                }
+            ]);
+            itemDisplayRules.Add("ScavBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,childName = "Head",
+localPos = new Vector3(0F, -2.68817F, -3.12881F),
+localAngles = new Vector3(299.9617F, 180F, 180F),
+localScale = new Vector3(11.30705F, 11.30705F, 11.30705F)
+                },
+            ]);
+        }
+        protected override void RegisterLanguageTokens()
+        {
+            base.RegisterLanguageTokens();
+        }
+        protected override void Hooks()
+        {
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
+            On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.DoInitialSightResponse += FalseSonBossSpeechDriver_DoInitialSightResponse;
+        }
+
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        {
+            orig.Invoke(self, damageInfo, victim);
+            GameObject obj = damageInfo.attacker;
+            if (obj != null)
+            {
+                LunarRosaryController lrc = obj.GetComponent<LunarRosaryController>();
+                if (lrc != null)
+                {
+                    lrc.AlertSpikeBarrage(damageInfo);
+                }
+            }
+        }
+
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            orig.Invoke(self);
+            Inventory i = self.inventory;
+            if (i != null)
+            {
+                self.AddItemBehavior<LunarRosaryController>(i.GetItemCount(Content.Items.LunarRosary));
+            }
+        }
+
+        private void BrotherSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_DoInitialSightResponse orig, BrotherSpeechDriver self)
+        {
+
+            ReadOnlyCollection<CharacterMaster> readOnlyInstancesList = CharacterMaster.readOnlyInstancesList;
+            bool flag = false;
+            for (int i = 0; i < readOnlyInstancesList.Count; i++)
+            {
+                if (readOnlyInstancesList[i].teamIndex == TeamIndex.Player)
+                {
+                    Inventory inv = readOnlyInstancesList[i].inventory;
+                    if (inv != null)
+                    {
+                        flag = inv.GetItemCount(Content.Items.LunarRosary) > 0;
+                    }
+                }
+            }
+            if (flag)
+            {
+                self.SendReponseFromPool(brotherLunarRosaryReactions);
+                return;
+            }
+            orig.Invoke(self);
+        }
+        private void FalseSonBossSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.orig_DoInitialSightResponse orig, FalseSonBossSpeechDriver self)
+        {
+            ReadOnlyCollection<CharacterMaster> readOnlyInstancesList = CharacterMaster.readOnlyInstancesList;
+            bool flag = false;
+            for (int i = 0; i < readOnlyInstancesList.Count; i++)
+            {
+                if (readOnlyInstancesList[i].teamIndex == TeamIndex.Player)
+                {
+                    Inventory inv = readOnlyInstancesList[i].inventory;
+                    if (inv != null)
+                    {
+                        flag = inv.GetItemCount(Content.Items.LunarRosary) > 0;
+                    }
+                }
+            }
+            if (flag)
+            {
+                self.SendReponseFromPool(falseSonLunarRosaryReactions);
+                return;
+            }
+            orig.Invoke(self);
+        }
+        protected override void SubmitItemAsAddressablePair(ref ItemDef itemDef)
+        {
+            Content.SubmitAddressablePickupPair(new Content.AddressablePickupPair
+            {
+                objectAddress = "RoR2/Base/ScavLunar/ScavLunar1Body.prefab",
+                pickupDef = itemDef
+            });
+            Content.SubmitAddressablePickupPair(new Content.AddressablePickupPair
+            {
+                objectAddress = "RoR2/Base/ScavLunar/ScavLunar2Body.prefab",
+                pickupDef = itemDef
+            });
+            Content.SubmitAddressablePickupPair(new Content.AddressablePickupPair
+            {
+                objectAddress = "RoR2/Base/ScavLunar/ScavLunar3Body.prefab",
+                pickupDef = itemDef
+            });
+            Content.SubmitAddressablePickupPair(new Content.AddressablePickupPair
+            {
+                objectAddress = "RoR2/Base/ScavLunar/ScavLunar4Body.prefab",
+                pickupDef = itemDef
+            });
+        }
+
+    
+        public class LunarRosaryController : CharacterBody.ItemBehavior
+        {
+
+            private float spikeCooldown;
+
+            private float spikeLaunchTimer;
+
+            private int spikesToLaunch;
+
+            public int corruptionCap
+            {
+                get
+                {
+                    int cap = Configuration.Items.LunarRosary.baseCorruptionCap;
+
+                    CharacterBody cb = this.body;
+                    if (cb != null)
+                    {
+                        Inventory i = cb.inventory;
+                        if (i != null)
+                        {
+                            int lunarItems = i.GetTotalItemCountOfTier(ItemTier.Lunar);
+                            EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(i.currentEquipmentIndex);
+                            if (ed != null)
+                            {
+                                if (ed.isLunar)
+                                {
+                                    lunarItems++;
+                                }
+                            }
+                            cap += lunarItems;
+                        }
+                    }
+
+                    return cap;
+                }
+            }
+
+            private float degradationTime
+            {
+                get
+                {
+                    float time = 1f;
+                    if (this.body)
+                    {
+                        Inventory i = this.body.inventory;
+                        if(i != null)
+                        {
+                            time = Util.GetStackingBehavior(Configuration.Items.LunarRosary.corruptionDegradeTime, Configuration.Items.LunarRosary.corruptionDegradeTimeStack, stack);
+                        }
+                    }
+                    return time;
+                }
+            }
+
+            private float corruptionInterval
+            {
+                get
+                {
+                    return Configuration.Items.LunarRosary.corruptionInterval / stack;
+                }
+            }
+
+            private void OnDisable()
+            {
+                this.body.SetBuffCount(Content.Buffs.FullyCorrupted.buffIndex, 0);
+            }
+
+            private float transformationTimer;
+
+            private float corruptionTimer;
+
+            public bool isFullyCorrupted = false;
+            
+            public void AlertSpikeBarrage(DamageInfo damageInfo)
+            {
+                if(!(this.isFullyCorrupted))
+                {
+                    return;
+                }
+                if(this.spikeCooldown > 0f)
+                {
+                    return;
+                }
+                if(damageInfo.procCoefficient <= 0f || damageInfo.damage <= 0f)
+                {
+                    return;
+                }
+                spikesToLaunch += Configuration.Items.LunarRosary.FullyCorrupted.spikeCount;
+                spikeCooldown += Configuration.Items.LunarRosary.FullyCorrupted.spikeCooldown;
+            }
+
+            private void FixedUpdate()
+            {
+                if (isFullyCorrupted)
+                {
+                    if (spikesToLaunch > 0)
+                    {
+                        if (spikeLaunchTimer > 0f)
+                        {
+                            spikeLaunchTimer -= Time.deltaTime;
+                        }
+                        else
+                        {
+                            RoR2.Util.PlayAttackSpeedSound("Play_moonBrother_m1_laser_shoot", this.body.gameObject, UnityEngine.Random.Range(0.8f, 1.2f));
+                            int num = Configuration.Items.LunarRosary.FullyCorrupted.spikeCount;
+                            Vector3 vector = this.body.inputBank ? this.body.inputBank.aimDirection : this.transform.forward;
+                            float num2 = 180f / (float)num;
+                            float d = 3f + (float)((int)this.body.radius) * 1f;
+                            Quaternion rotation = RoR2.Util.QuaternionSafeLookRotation(vector);
+                            Vector3 b = Quaternion.AngleAxis((float)(this.spikesToLaunch - 1) * num2 - num2 * (float)(num - 1) / 2f, vector) * Vector3.up * d;
+                            Vector3 position = this.body.aimOrigin + b;
+                            FireProjectileInfo fpi = new FireProjectileInfo()
+                            {
+                                crit = this.body.RollCrit(),
+                                damage = this.body.damage * Configuration.Items.LunarRosary.FullyCorrupted.spikeDamageCoefficient,
+                                damageColorIndex = DamageColorIndex.Item,
+                                owner = this.body.gameObject,
+                                rotation = RoR2.Util.QuaternionSafeLookRotation(this.body.inputBank.GetAimRay().direction, Vector3.up),
+                                position = position,
+                                procChainMask = default,
+                                projectilePrefab = Content.Misc.CorruptedSpike,
+                            };
+                            EffectManager.SimpleEffect(Content.Effects.CorruptedSpikeImpact.prefab, position, Quaternion.identity, true);
+                            ProjectileManager.instance.FireProjectile(fpi);
+                            spikesToLaunch--;
+                            spikeLaunchTimer = Configuration.Items.LunarRosary.FullyCorrupted.spikeInterval;
+                        }
+                    }
+                    else
+                    {
+                        if (spikeCooldown > 0f)
+                        {
+                            spikeCooldown -= Time.deltaTime;
+                        }
+                    }
+                    if (transformationTimer > 0f)
+                    {
+                        transformationTimer -= Time.deltaTime;
+                        if(transformationTimer <= 0f)
+                        {
+                            float scale = 1f;
+                            ModelLocator ml = this.body.modelLocator;
+                            if (ml != null)
+                            {
+                                scale = ml.modelScaleCompensation;
+                            }
+                            EffectData ed = new EffectData()
+                            {
+                                origin = this.body.coreTransform.position,
+                                start = this.body.coreTransform.position,
+                                rootObject = this.body.gameObject,
+                                scale = scale,
+                                rotation = Quaternion.identity,
+                            };
+                            EffectManager.SpawnEffect(Content.Effects.TransformationComplete.prefab, ed, true);
+                        }
+                        return;
+                    }
+                    if(corruptionTimer > 0)
+                    {
+                        corruptionTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        this.body.RemoveBuff(Content.Buffs.FullyCorrupted);
+                        corruptionTimer = degradationTime;
+                    }
+                    if(this.body.GetBuffCount(Content.Buffs.FullyCorrupted) <= 0)
+                    {
+                        this.isFullyCorrupted = false;
+                        this.corruptionTimer = corruptionInterval;
+                        return;
+                    }
+                }
+                else
+                {
+
+                    if (corruptionTimer > 0)
+                    {
+                        corruptionTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        this.body.AddBuff(Content.Buffs.LunarCorruption);
+                        this.corruptionTimer = corruptionInterval;
+                    }
+                    if(this.body.GetBuffCount(Content.Buffs.LunarCorruption) > corruptionCap)
+                    {
+                        this.isFullyCorrupted = true;
+                        this.body.SetBuffCount(Content.Buffs.FullyCorrupted.buffIndex, this.corruptionCap);
+                        this.body.SetBuffCount(Content.Buffs.LunarCorruption.buffIndex, 0);
+                        float scale = 1f;
+                        ModelLocator ml = this.body.modelLocator;
+                        if (ml != null)
+                        {
+                            scale = ml.modelScaleCompensation;
+                        }
+                        EffectData ed = new EffectData()
+                        {
+                            origin = this.body.coreTransform.position,
+                            start = this.body.coreTransform.position,
+                            rootObject = this.body.gameObject,
+                            scale = scale,
+                            rotation = Quaternion.identity,
+                        };
+                        EffectManager.SpawnEffect(Content.Effects.CorruptionTakesHold.prefab, ed, true);
+                        transformationTimer = Configuration.Items.LunarRosary.transformationTimer;
+                        this.body.AddTimedBuff(RoR2Content.Buffs.ArmorBoost, transformationTimer);
+                        this.corruptionTimer = degradationTime;
+                        return;
+                    }
+                }
+            }
         }
     }
 }

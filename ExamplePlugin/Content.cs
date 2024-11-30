@@ -294,6 +294,12 @@ namespace SivsContentPack
             public static GameObject sniperHermitMaster;
             public static CharacterSpawnCard iscSniperHermit;
 
+            public static GameObject hereticMaster;
+            public static CharacterSpawnCard iscHeretic;
+
+            public static GameObject aurelioniteMaster;
+            public static CharacterSpawnCard iscAurelionite;
+
             public static string GetChampionSubtitle(ChampionType type)
             {
                 switch (type)
@@ -329,6 +335,8 @@ namespace SivsContentPack
                 new RedBaron().Init(ref redBaronMaster, ref iscRedBaron);
                 new DeathUrchin().Init(ref deathUrchinMaster, ref iscDeathUrchin);
                 new SniperHermit().Init(ref sniperHermitMaster, ref iscSniperHermit);
+                new Heretic().Init(ref hereticMaster, ref iscHeretic);
+                new Aurelionite().Init(ref aurelioniteMaster, ref iscAurelionite);
 
                 dccsChampions = ScriptableObject.CreateInstance<DirectorCardCategorySelection>();
                 int index = dccsChampions.AddCategory("champions", 10);
@@ -386,6 +394,16 @@ namespace SivsContentPack
                 {
                     spawnCard = iscSniperHermit,
                     selectionWeight = 5,
+                });
+                dccsChampions.AddCard(index, new DirectorCard()
+                {
+                    spawnCard = iscHeretic,
+                    selectionWeight = 1,
+                });
+                dccsChampions.AddCard(index, new DirectorCard()
+                {
+                    spawnCard = iscAurelionite,
+                    selectionWeight = 1,
                 });
             }
 
@@ -459,7 +477,7 @@ namespace SivsContentPack
             public static void Init()
             {
 
-                new MaterialTester().Init(ref Content.Items.MaterialTester);
+                //new MaterialTester().Init(ref Content.Items.MaterialTester);
                 new ChampionAura().Init(ref Content.Items.ChampionAura);
 
                 new GlassShield().Init(ref Content.Items.GlassShield);
@@ -504,6 +522,7 @@ namespace SivsContentPack
                 //new FireburstOnFreeze().Init(ref Content.Items.FireburstOnFreeze);
                 new DeathImmunity().Init(ref Content.Items.DeathImmunity);
                 new SlowTime().Init(ref Content.Items.SlowTime);
+                //new ChargingLaser().Init(ref Content.Items.ChargingLaser);
 
                 //new StickyBombVoid().Init(ref Content.Items.StickyBombVoid);
                 //new EnergyDrinkVoid().Init(ref Content.Items.EnergyDrinkVoid);
@@ -531,6 +550,7 @@ namespace SivsContentPack
                 new GodMode().Init(ref Content.Items.Godmode);
                 new VoidEye().Init(ref Content.Items.VoidEye);
                 new ThunderAura().Init(ref Content.Items.ThunderAura);
+                new LunarRosary().Init(ref Content.Items.LunarRosary);
 
                 new EquipEliteShadow().Init(ref Content.Items.AffixShadow);
                 new EquipEliteUnstable().Init(ref Content.Items.AffixUnstable);
@@ -727,6 +747,8 @@ namespace SivsContentPack
                 new DeathImmunityBuff().Init(ref Content.Buffs.DeathImmunity);
                 new TimeSlowed().Init(ref Content.Buffs.SlowedTime);
                 new ArmorZone().Init(ref Content.Buffs.ArmorZone);
+                new LunarCorruption().Init(ref Content.Buffs.LunarCorruption);
+                new FullyCorrupted().Init(ref Content.Buffs.FullyCorrupted);
 
                 //new ShadowCloak().Init(ref Content.Buffs.DarknessCamo);
                 new EliteTankArmorBonus().Init(ref Content.Buffs.TankArmorBonus);
@@ -760,6 +782,8 @@ namespace SivsContentPack
             public static BuffDef StoredLunarCoins;
             public static BuffDef NullSeedActive;
             public static BuffDef NullSeedCooldown;
+            public static BuffDef LunarCorruption;
+            public static BuffDef FullyCorrupted;
             public static BuffDef DeathImmunity;
         }
         public static class Elites
@@ -829,6 +853,10 @@ namespace SivsContentPack
                 new WispOnHitImpact().Init(ref Content.Effects.MiniWispImpact);
                 new SingularityBlast().Init(ref Content.Effects.SingularityBlast);
                 new TarLifeStealOrbFX().Init(ref Content.Effects.TarLifeStealOrb);
+                new CorruptedSpikeImpact().Init(ref Content.Effects.CorruptedSpikeImpact);
+                new CorruptionTakesHold().Init(ref Content.Effects.CorruptionTakesHold);
+                new CorruptionLifts().Init(ref Content.Effects.CorruptionLifts);
+                new TransformationComplete().Init(ref Content.Effects.TransformationComplete);
             }
             public static EffectDef BlockLowDamageHitsProc;
             public static EffectDef DoubleProjectilesProc;
@@ -853,8 +881,12 @@ namespace SivsContentPack
             public static EffectDef FireEyeOrb;
             public static EffectDef FireEyeProc;
             public static EffectDef GriefProc;
+            public static EffectDef CorruptedSpikeImpact;
             public static EffectDef SingularityBlast;
             public static EffectDef ShadowCloakBreak;
+            public static EffectDef CorruptionTakesHold;
+            public static EffectDef CorruptionLifts;
+            public static EffectDef TransformationComplete;
         }
         public static class Orbs
         {
@@ -933,6 +965,7 @@ namespace SivsContentPack
             public static GameObject MiniWispProjectile;
             public static GameObject EliteUnstableFireball;
             public static GameObject Smite;
+            public static GameObject CorruptedSpike;
             public static GameObject ThunderAuraOrbiter;
         }
         public static class DeployableSlots

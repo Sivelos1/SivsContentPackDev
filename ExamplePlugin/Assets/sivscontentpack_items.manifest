@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1767588553
+CRC: 3600376808
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6aa1fe14ee74afb68b99f4dd825434fa
+    Hash: 31229d0336500e01ade3c5c0be64e3d4
   TypeTreeHash:
     serializedVersion: 2
     Hash: 673bf3ff122e7afdc9677180b315f8e4
@@ -329,6 +329,7 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/Stuff/MiscMaterials/matGlowItemPickup.mat
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matGlass.mat
+- Assets/Stuff/Items/Rare/FrenzyOnBossKill/matFrenzyOnBossKillWave.mat
 - Assets/Stuff/Items/GodTier/ThunderAura/matLightningInicator.mat
 - Assets/Stuff/Items/Enemy/Geode/matGeode.mat
 - Assets/Stuff/Items/Enemy/SmiteOnHit/SmiteOnHitFollower.prefab
@@ -360,6 +361,7 @@ Assets:
 - Assets/Stuff/Items/Lunar/Grudge/matGrudgeTrail.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/DisplayWispOnKill.prefab
 - Assets/Stuff/Items/Common/GlassShield/matGlassShield.mat
+- Assets/Stuff/Items/Equipment/ChargingLaser/matChargingLaserTrimsheet.mat
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/DisplayFrenzyOnBossKill.prefab
 - Assets/Stuff/Items/GodTier/HighlightTierGodItem.prefab
 - Assets/Stuff/Items/Enemy/MiniWisp/matWispMineNapkin.mat
@@ -377,8 +379,8 @@ Assets:
 - Assets/Stuff/Items/Enemy/ProjectileKiller/matPKSoundwave.mat
 - Assets/Stuff/Items/Uncommon/UpgradeChests/UpgradeChests.asset
 - Assets/Stuff/Items/Enemy/Mushroom/matSporeGas.mat
-- Assets/Stuff/Items/Enemy/Tentacle/matTentacle.mat
 - Assets/Stuff/Items/Lunar/Grudge/GrudgeProjectile.prefab
+- Assets/Stuff/Items/Enemy/Tentacle/matTentacle.mat
 - Assets/Stuff/Items/Lunar/Grudge/matGrudgeNail.mat
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/matMiniConstructTrail.mat
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/miniConstructs.fbx
@@ -408,6 +410,7 @@ Assets:
 - Assets/Stuff/Items/Common/GoldStar/matCoin1.mat
 - Assets/Stuff/Items/GodTier/GodMode/texGodModeIcon.png
 - Assets/Stuff/Items/Enemy/ProjectileKiller/matBellTrimsheet.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/matCorruptionTakesHold2.mat
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/matNuclearBlock.mat
 - Assets/Stuff/Items/Enemy/Mushroom/matSporeGrenadeTrail.mat
 - Assets/Stuff/MiscMaterials/matFireGeneric.mat
@@ -417,11 +420,14 @@ Assets:
 - Assets/Stuff/MiscMaterials/matTracer.mat
 - Assets/Stuff/Items/Enemy/FireEye/texRampWormEye.png
 - Assets/Stuff/Items/Void/StickyBombVoid/matSBVAura.mat
+- Assets/Stuff/MiscMaterials/matTracerBlack.mat
 - Assets/Stuff/Items/Enemy/Geode/bgGeodeArmor.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/TransformationCompleteFX.prefab
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand.mat
 - Assets/Stuff/Items/GodTier/ThunderAura/matPrimeDevastatorChargeVFX2.mat
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneTabletSoul.mat
 - Assets/Stuff/Items/GodTier/ThunderAura/matPrimeDevastatorChargeVFX3.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/matRosary.mat
 - Assets/Stuff/Items/Enemy/VoidShackles/VoidShackles.asset
 - Assets/Stuff/Items/Enemy/Tentacle/matTentacleTether.mat
 - Assets/Stuff/Items/Enemy/MeleeAttackSpeed/MeleeAttackSpeed.asset
@@ -443,6 +449,7 @@ Assets:
 - Assets/Stuff/Items/Enemy/ProjectileKiller/matPKRangeIndicator.mat
 - Assets/Stuff/Items/Enemy/VoidShackles/matVSShackle.mat
 - Assets/Stuff/Items/Void/EnergyDrinkVoid/DisplayVoidSoda.prefab
+- Assets/Stuff/Items/GodTier/LunarRosary/CorruptedSpikeImpact.prefab
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/PickupHealthBasedDamageBonus.prefab
 - Assets/Stuff/Items/Enemy/Mushroom/DisplayMushroom.prefab
 - Assets/Stuff/Items/Common/ProcBoost/texProcBoostIcon.png
@@ -471,6 +478,7 @@ Assets:
 - Assets/Stuff/Items/Enemy/DoubleProjectiles/matRJProc.mat
 - Assets/Stuff/Items/Lunar/Grudge/matGrudgeAura.mat
 - Assets/Stuff/Items/Lunar/VoidSeedSpawner/matVSSSeed.mat
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLElectric.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/Animations/miniWispChargeEmbers.anim
 - Assets/Stuff/Items/Enemy/SmiteOnHit/matGreaterWispRays.mat
 - Assets/Stuff/Items/Lunar/Egg/matEgg.mat
@@ -497,16 +505,20 @@ Assets:
 - Assets/Stuff/Items/GodTier/GodMode/matLunarWispFlames.mat
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/BlockLowDamageHitsProc.prefab
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/texFrenzyOnBossKillIcon.png
-- Assets/Stuff/Items/Enemy/SmiteOnHit/SmiteEffect.prefab
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLDisplayGlow.mat
 - Assets/Stuff/Items/Enemy/Tentacle/DisplayTentacle.prefab
+- Assets/Stuff/Items/Enemy/SmiteOnHit/SmiteEffect.prefab
 - Assets/Stuff/Items/Equipment/FireburstOnFreeze/FireBurstOnFreeze.asset
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/texOrbitingConstructsIcon.png
 - Assets/Stuff/Items/Enemy/Mushroom/MushroomWard.prefab
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/DisplayMedalUsed.prefab
 - Assets/Stuff/MiscMaterials/matDustOpaque.mat
 - Assets/Stuff/Items/Enemy/GriefFlower/matGriefFlower.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/bdLunarCorruption.asset
 - Assets/Stuff/Items/Void/StickyBombVoid/PickupStickyBombVoid.prefab
+- Assets/Stuff/Items/GodTier/LunarRosary/CorruptionTakesHoldFX.prefab
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/bdFrenzyOnBossKill.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/matLesserPearl.mat
 - Assets/Stuff/Items/Enemy/SmiteOnHit/matGreaterWispFire.mat
 - Assets/Stuff/Items/Common/GlassShield/DisplayGlassShield.prefab
 - Assets/Stuff/Items/GodTier/VoidEye/DisplayVoidEye.prefab
@@ -531,9 +543,11 @@ Assets:
 - Assets/Stuff/Items/Common/GlassShield/matGlassShards.mat
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneTabletBlood.mat
 - Assets/Stuff/Items/GodTier/GodMode/udGodMode.asset
+- Assets/Stuff/Items/Equipment/ChargingLaser/DisplayChargingLaser.prefab
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/matFrenzyOnBossKillPulse.mat
 - Assets/Stuff/Items/Enemy/BeetlePlush/displayBeetlePlushSitting.prefab
 - Assets/Stuff/Items/Enemy/SmiteOnHit/Smite.prefab
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLLaser.mat
 - Assets/Stuff/Items/Uncommon/UpgradeChests/UpgradeEffect.prefab
 - Assets/Stuff/Items/Enemy/MeleeAttackSpeed/matTooth.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/PickupWispOnKill.prefab
@@ -591,16 +605,20 @@ Assets:
 - Assets/Stuff/Items/Enemy/DoubleProjectiles/DoubleProjectiles.asset
 - Assets/Stuff/Items/Enemy/MiniWisp/Animations/miniWispIdle.anim
 - Assets/Stuff/Items/Common/GlassShield/PickupGlassShield.prefab
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLEmbers.mat
 - Assets/Stuff/Items/Void/StickyBombVoid/matVoidMineBillboard.mat
 - Assets/Stuff/Items/Enemy/BighornBuckler/DisplayBisonShield.prefab
-- Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand_Height.png
+- Assets/Stuff/Items/GodTier/LunarRosary/matRosarySpike.mat
 - Assets/Stuff/Items/Common/GoldStar/GoldStar.asset
+- Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand_Height.png
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/PickupMedal.prefab
 - Assets/Stuff/Items/GodTier/GodTierSystem.prefab
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneWoods.mat
-- Assets/Stuff/Items/GodTier/ThunderAura/DisplayThunderAura.prefab
+- Assets/Stuff/Items/GodTier/LunarRosary/matRosarySpikeAura.mat
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand_Normal_OpenGL.png
+- Assets/Stuff/Items/GodTier/ThunderAura/DisplayThunderAura.prefab
 - Assets/Stuff/Items/Lunar/Grudge/matGrudge.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/CorruptionLiftsFX.prefab
 - Assets/Stuff/Items/Uncommon/HealOnLevelUp/efConfettiBurst.prefab
 - Assets/Stuff/Items/Uncommon/UpgradeChests/PickupEnvelope.prefab
 - Assets/Stuff/Items/Enemy/MeleeAttackSpeed/matToothOverlay.mat
@@ -610,12 +628,14 @@ Assets:
 - Assets/Stuff/Items/Uncommon/TeleporterArmorZone/ArmorZone.prefab
 - Assets/Stuff/Items/GodTier/itdGodTier.asset
 - Assets/Stuff/Items/Void/EnergyDrinkVoid/EnergyDrinkVoid.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/bdFullyCorrupted.asset
 - Assets/Stuff/Items/Void/WakeOfVulturesVoid/WakeOfVulturesVoid.asset
 - Assets/Stuff/Items/GodTier/VoidEye/SingularityGhost.prefab
-- Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneSoul.mat
 - Assets/Stuff/Items/Enemy/NullSeed/matNullSeed.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/WispOnKillFollower.prefab
 - Assets/Stuff/Items/Common/ProcBoost/ProcBoost.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/matShinyPearl.mat
+- Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneSoul.mat
 - Assets/Stuff/Items/Enemy/BeetleHammer/PickupBeetleHammer.prefab
 - Assets/Stuff/Items/Lunar/Chimera/Blessings/ChimeraSpeed.asset
 - Assets/Stuff/Items/Lunar/VoidSeedSpawner/VoidSeedSpawner.asset
@@ -659,7 +679,9 @@ Assets:
 - Assets/Stuff/Items/Lunar/Chimera/DisplayChimera.prefab
 - Assets/Stuff/Items/Enemy/BighornBuckler/BisonChargeEffect.prefab
 - Assets/Stuff/MiscMaterials/matLaserPointerBeam.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/matCorruptionTakesHold.mat
 - Assets/Stuff/Items/GodTier/VoidEye/udVoidEye.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/CorruptedSpikeProjectile.prefab
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/matPickupMedal.mat
 - Assets/Stuff/Items/Uncommon/RuneTablet/RuneChance.asset
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/matTrimSheetConstructionNuclearPasta.mat
@@ -693,11 +715,13 @@ Assets:
 - Assets/Stuff/Items/Uncommon/ProjectileBoost/matThrusterExhaust.mat
 - Assets/Stuff/Items/Enemy/BeetlePlush/buffBeetlePlushRegenBonus.asset
 - Assets/Stuff/Items/Enemy/BighornBuckler/matBisonShield.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/matPearl.mat
 - Assets/Stuff/Items/Common/FlatHealingBonus/matMilk.mat
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/animMiniConstruct.controller
 - Assets/Stuff/Items/Uncommon/HealOnLevelUp/PickupHealOnLevelUp.prefab
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand_Base_color.png
 - Assets/Stuff/Items/Enemy/ProjectileKiller/ProjectileKiller.asset
+- Assets/Stuff/Items/GodTier/LunarRosary/matCorruptionOverlay.mat
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/matMiniConstructElectric.mat
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/BossKillFrenzyProc.prefab
 - Assets/Stuff/Items/Enemy/VoidShackles/VoidShacklePortal.prefab
@@ -732,6 +756,7 @@ Assets:
 - Assets/Stuff/Items/Equipment/SlowTime/SlowTimeAreaIndicator.prefab
 - Assets/Stuff/Items/Enemy/ImpEye/matPickupImpEye.mat
 - Assets/Stuff/Items/Enemy/VoidShackles/matVoidShacklesPortalRim.mat
+- Assets/Stuff/Items/Equipment/ChargingLaser/ChargingLaser.asset
 - Assets/Stuff/Items/Enemy/SmiteOnHit/SmitePredictionEffect.prefab
 - Assets/Stuff/Items/GodTier/VoidEye/VoidEye.asset
 - Assets/Stuff/Items/Enemy/Tarbine/TarbineController.prefab
@@ -752,6 +777,7 @@ Assets:
 - Assets/Stuff/Items/Lunar/Chimera/Blessings/ChimeraShields.asset
 - Assets/Stuff/Items/Uncommon/UpgradeChests/matUpgradeEffect.mat
 - Assets/Stuff/Items/Enemy/NullSeed/texNullSeedIcon.png
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLTracer.mat
 - Assets/Stuff/MiscMaterials/matSparkle.mat
 - Assets/Stuff/Items/Enemy/BighornBuckler/BisonShield.asset
 - Assets/Stuff/Items/Enemy/FireEye/matFireEyeProcRing.mat
@@ -799,15 +825,17 @@ Assets:
 - Assets/Stuff/Items/Common/ProcBoost/matCoin.mat
 - Assets/Stuff/Items/GodTier/ThunderAura/ThunderAuraProjectileGhost.prefab
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneTabletOrder.mat
-- Assets/Stuff/Items/Enemy/VoidShackles/matVSPickupChain.mat
+- Assets/Stuff/Items/Equipment/ChargingLaser/matCLLightning.mat
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/BlockLowDamageHits.asset
 - Assets/Stuff/Items/GodTier/GodMode/PickupGodMode.prefab
-- Assets/Stuff/Items/Enemy/BeetlePlush/matBeetleRegenWard.mat
+- Assets/Stuff/Items/Equipment/ChargingLaser/matChargingLaserHolo.mat
 - Assets/Stuff/Items/Common/DebuffBoss/DebuffBoss.asset
 - Assets/Stuff/Items/Lunar/Chimera/Blessings/ChimeraLuck.asset
-- Assets/Stuff/Items/Uncommon/YellowItemOnKill/matMedalUsed.mat
+- Assets/Stuff/Items/GodTier/LunarRosary/DisplayLunarRosary.prefab
+- Assets/Stuff/Items/Enemy/VoidShackles/matVSPickupChain.mat
 - Assets/Stuff/Items/Enemy/NullSeed/bdNullSeedReady.asset
-- Assets/Stuff/Items/Rare/FrenzyOnBossKill/matFrenzyOnBossKillWave.mat
+- Assets/Stuff/Items/Enemy/BeetlePlush/matBeetleRegenWard.mat
+- Assets/Stuff/Items/Uncommon/YellowItemOnKill/matMedalUsed.mat
 - Assets/Stuff/Items/Equipment/SlowTime/SlowTimeEffect.prefab
 - Assets/Stuff/Items/GodTier/ThunderAura/LightningStrikePredictionEffect.prefab
 - Assets/Stuff/Items/Equipment/SlowTime/SlowTime.asset

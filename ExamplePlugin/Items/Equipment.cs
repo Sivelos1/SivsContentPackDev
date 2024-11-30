@@ -498,6 +498,7 @@ namespace SivsContentPack.Items
         protected override void LoadAssets(ref EquipmentDef equipmentDef)
         {
             equipmentDef = Assets.AssetBundles.Items.LoadAsset<EquipmentDef>("ChargingLaser");
+            displayPrefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("DisplayChargingLaser");
         }
 
         protected override bool CheckIfEnabled()
@@ -506,11 +507,236 @@ namespace SivsContentPack.Items
         }
         protected override void HandleMaterials()
         {
-
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matChargingLaserTrimsheet");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matChargingLaserHolo");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLDisplayGlow");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLElectric");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLEmbers");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLLaser");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLLightning");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matCLTracer");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matTracerBlack");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
         }
         protected override void RegisterItemDisplayRules(ref ItemDisplayRuleDict itemDisplayRules)
         {
-
+            itemDisplayRules.Add("CommandoBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("HuntressBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("Bandit2Body", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("ToolbotBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("MageBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("TreebotBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("LoaderBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("MercBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("CaptainBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("CrocoBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("EngiBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("RailgunnerBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("VoidSurvivorBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("SeekerBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("FalseSonBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Root",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("EngiTurretBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Root",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("EngiWalkerTurretBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Root",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("EquipmentDroneBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
+            itemDisplayRules.Add("ScavBody", [
+                new ItemDisplayRule()
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = displayPrefab,
+                    childName = "Base",
+                    localAngles = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localPos = new UnityEngine.Vector3(0f, 0f, 0f),
+                    localScale = new UnityEngine.Vector3(1f, 1f, 1f),
+                }
+            ]);
         }
         protected override void Hooks()
         {
@@ -536,12 +762,6 @@ namespace SivsContentPack.Items
             return true;
         }
 
-        public class ChargingLaserController : CharacterBody.ItemBehavior
-        {
-            public float networkCharge;
-
-            private float _charge;
-        }
 
     }
 

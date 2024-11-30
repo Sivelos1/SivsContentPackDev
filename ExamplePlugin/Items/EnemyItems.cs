@@ -13,7 +13,6 @@ using UnityEngine.AddressableAssets;
 using System.Runtime.CompilerServices;
 using RoR2.Navigation;
 using EntityStates;
-using Mono.Security.X509.Extensions;
 using SivsContentPack.CustomEntityStates.MiniConstructs;
 using System.Linq;
 using System.ComponentModel;
@@ -1210,7 +1209,7 @@ localScale = new Vector3(1F, 1F, 1F)
                         crit = this.body.RollCrit(),
                         damage = (tether.damage / (float)Configuration.Items.Tentacle.ticksPerSecond),
                         position = tether.target.transform.position,
-                        procCoefficient = 1.0f,
+                        procCoefficient = 0.2f,
                         damageColorIndex = DamageColorIndex.Item,
                         damageType = DamageType.Generic,
                         procChainMask = pcm,

@@ -13,6 +13,9 @@
     "ACHIEVEMENT_UNLOCKVOIDEYE_DESCRIPTION": "Obtain the Diviner of the Deep's unique item.",
 
     "ACHIEVEMENT_UNLOCKTHUNDERAURA_NAME": "Heart of Gold",
-    "ACHIEVEMENT_UNLOCKTHUNDERAURA_DESCRIPTION": "Obtain the Eye of the Storm's unique item."
+    "ACHIEVEMENT_UNLOCKTHUNDERAURA_DESCRIPTION": "Obtain the Eye of the Storm's unique item.",
+
+    "ACHIEVEMENT_UNLOCKLUNARROSARY_NAME": "Twisted Devotion",
+    "ACHIEVEMENT_UNLOCKLUNARROSARY_DESCRIPTION": "Obtain a Twisted Scavenger's unique item."
   }
 }
