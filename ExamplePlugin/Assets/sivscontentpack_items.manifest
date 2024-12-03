@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3600376808
+CRC: 3188320925
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 31229d0336500e01ade3c5c0be64e3d4
+    Hash: 05a613dc8bc6adf1f0e6f076be135360
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 673bf3ff122e7afdc9677180b315f8e4
+    Hash: ac729561e0def41ff259dd105583d3cd
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -40,6 +40,8 @@ ClassTypes:
 - Class: 96
   Script: {instanceID: 0}
 - Class: 108
+  Script: {instanceID: 0}
+- Class: 111
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -206,6 +208,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -1561644061, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -408685376, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -662483879, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -345,6 +349,7 @@ Assets:
 - Assets/Stuff/Items/GodTier/ThunderAura/matShockAttack.mat
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matBlood.mat
 - Assets/Stuff/Items/Enemy/VoidShackles/matVSProcShockwave.mat
+- Assets/Stuff/Items/Lunar/Egg/matEggStar.mat
 - Assets/Stuff/Items/Common/GlassShield/GlassShieldBroken.asset
 - Assets/Stuff/Items/Enemy/NullSeed/PickupNullSeed.prefab
 - Assets/Stuff/Items/Common/BoostExperience/BoostExperience.asset
@@ -364,6 +369,7 @@ Assets:
 - Assets/Stuff/Items/Equipment/ChargingLaser/matChargingLaserTrimsheet.mat
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/DisplayFrenzyOnBossKill.prefab
 - Assets/Stuff/Items/GodTier/HighlightTierGodItem.prefab
+- Assets/Stuff/Items/Enemy/LunarExplodeOnDeath/LunarExplodeOnDeath.asset
 - Assets/Stuff/Items/Enemy/MiniWisp/matWispMineNapkin.mat
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneMountain.mat
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/matNuclearGlow.mat
@@ -447,6 +453,7 @@ Assets:
 - Assets/Stuff/Items/GodTier/GodMode/matLunarSpike.mat
 - Assets/Stuff/Items/Lunar/Monocle/Monocle.asset
 - Assets/Stuff/Items/Enemy/ProjectileKiller/matPKRangeIndicator.mat
+- Assets/Stuff/Items/Equipment/DeathImmunity/DeathImmunityProcEffect.prefab
 - Assets/Stuff/Items/Enemy/VoidShackles/matVSShackle.mat
 - Assets/Stuff/Items/Void/EnergyDrinkVoid/DisplayVoidSoda.prefab
 - Assets/Stuff/Items/GodTier/LunarRosary/CorruptedSpikeImpact.prefab
@@ -477,11 +484,13 @@ Assets:
 - Assets/Stuff/Items/Uncommon/HealOnLevelUp/matHealOnLevelUp.mat
 - Assets/Stuff/Items/Enemy/DoubleProjectiles/matRJProc.mat
 - Assets/Stuff/Items/Lunar/Grudge/matGrudgeAura.mat
+- Assets/Stuff/Items/Equipment/DeathImmunity/DeathImmunityEffect.prefab
 - Assets/Stuff/Items/Lunar/VoidSeedSpawner/matVSSSeed.mat
 - Assets/Stuff/Items/Equipment/ChargingLaser/matCLElectric.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/Animations/miniWispChargeEmbers.anim
 - Assets/Stuff/Items/Enemy/SmiteOnHit/matGreaterWispRays.mat
 - Assets/Stuff/Items/Lunar/Egg/matEgg.mat
+- Assets/Stuff/Items/Lunar/Egg/EggUsed.asset
 - Assets/Stuff/Items/Uncommon/TeleporterArmorZone/PickupTeleporterArmorZone.prefab
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/DropYellowItemOnKillUsed.asset
 - Assets/Stuff/Items/Equipment/DeathImmunity/PickupDeathImmunity.prefab
@@ -492,6 +501,7 @@ Assets:
 - Assets/Stuff/Items/Enemy/ImpEye/ImpsEye.asset
 - Assets/Stuff/Items/Rare/FrenzyOnBossKill/matFrenzyOnBossKillOverlay.mat
 - Assets/Stuff/Items/GodTier/VoidEye/DisplayVoidEyeRaidCrab.prefab
+- Assets/Stuff/Items/GodTier/LunarRosary/udLunarRosary.asset
 - Assets/Stuff/Items/Enemy/FireEye/FireEye.asset
 - Assets/Stuff/Items/Equipment/DeathImmunity/matAngel.mat
 - Assets/Stuff/Items/Rare/HealthBasedDamageBonus/matDragonBand_Emissive.png
@@ -593,6 +603,7 @@ Assets:
 - Assets/Stuff/Items/Enemy/OrbitingConstructs/OrbitingConstruct.prefab
 - Assets/Stuff/Items/Void/StickyBombVoid/matVoidMineProximity.mat
 - Assets/Stuff/MiscMaterials/matHealingCross.mat
+- Assets/Stuff/Items/Equipment/DeathImmunity/matAngelFeather.mat
 - Assets/Stuff/Items/Common/GoldStar/PickupGoldStar.prefab
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/matNuclearPastaDistortion.mat
 - Assets/Stuff/Items/Enemy/MiniWisp/Animations/miniWispSpawn.anim
@@ -682,6 +693,7 @@ Assets:
 - Assets/Stuff/Items/GodTier/LunarRosary/matCorruptionTakesHold.mat
 - Assets/Stuff/Items/GodTier/VoidEye/udVoidEye.asset
 - Assets/Stuff/Items/GodTier/LunarRosary/CorruptedSpikeProjectile.prefab
+- Assets/Stuff/Items/Lunar/Egg/Egg.asset
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/matPickupMedal.mat
 - Assets/Stuff/Items/Uncommon/RuneTablet/RuneChance.asset
 - Assets/Stuff/Items/Rare/BlockLowDamageHits/matTrimSheetConstructionNuclearPasta.mat
@@ -701,6 +713,7 @@ Assets:
 - Assets/Stuff/Items/Uncommon/RuneTablet/Materials/matRuneCombat.mat
 - Assets/Stuff/Items/GodTier/VoidEye/matSingularityOrb.mat
 - Assets/Stuff/Items/GodTier/ThunderAura/ThunderAura.asset
+- Assets/Stuff/Items/Equipment/DeathImmunity/matAngelEffect.mat
 - Assets/Stuff/Items/GodTier/VoidEye/matVoidEyeIris.mat
 - Assets/Stuff/MiscMaterials/matTracerBright.mat
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/DropYellowItemOnKill.asset
@@ -710,8 +723,8 @@ Assets:
 - Assets/Stuff/Items/Uncommon/GoldIdol/GoldIdol.asset
 - Assets/Stuff/Items/Equipment/SlowTime/matTimeRuneRibbon.mat
 - Assets/Stuff/Items/GodTier/GodMode/matTrimsheetMoon.mat
-- Assets/Stuff/Items/Enemy/BeetlePlush/pickupBeetlePlush.prefab
 - Assets/Stuff/Items/Enemy/Tentacle/matTentacleLightning.mat
+- Assets/Stuff/Items/Enemy/BeetlePlush/pickupBeetlePlush.prefab
 - Assets/Stuff/Items/Uncommon/ProjectileBoost/matThrusterExhaust.mat
 - Assets/Stuff/Items/Enemy/BeetlePlush/buffBeetlePlushRegenBonus.asset
 - Assets/Stuff/Items/Enemy/BighornBuckler/matBisonShield.mat
@@ -838,6 +851,7 @@ Assets:
 - Assets/Stuff/Items/Uncommon/YellowItemOnKill/matMedalUsed.mat
 - Assets/Stuff/Items/Equipment/SlowTime/SlowTimeEffect.prefab
 - Assets/Stuff/Items/GodTier/ThunderAura/LightningStrikePredictionEffect.prefab
+- Assets/Stuff/Items/Rare/Excalibur/standardSurface1.mat
 - Assets/Stuff/Items/Equipment/SlowTime/SlowTime.asset
 - Assets/Stuff/Items/Enemy/VoidShackles/matVSInterior.mat
 Dependencies:

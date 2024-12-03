@@ -172,7 +172,7 @@ namespace SivsContentPack.Items
             m = Assets.AssetBundles.Items.LoadAsset<Material>("matGodModeHead");
             Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Intersection Remap");
             m = Assets.AssetBundles.Items.LoadAsset<Material>("matGodModeEye");
-            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
             m = Assets.AssetBundles.Items.LoadAsset<Material>("matBrotherEyeTrail");
             Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
             m = Assets.AssetBundles.Items.LoadAsset<Material>("matBrotherDisplayEye");
@@ -1633,6 +1633,12 @@ localScale = new Vector3(10F, 10F, 10F)
             Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
             m = Assets.AssetBundles.Items.LoadAsset<Material>("matLightningSmall");
             Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matPrimeDevastatorChargeVFX1");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matPrimeDevastatorChargeVFX2");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matPrimeDevastatorChargeVFX3");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
         }
         protected override bool CheckIfEnabled()
         {
@@ -2219,7 +2225,7 @@ localScale = new Vector3(1F, 1F, 1F)
             }
             private void OnDisable()
             {
-                CharacterMaster cm = this.body.master;
+                /*CharacterMaster cm = this.body.master;
                 if (cm != null)
                 {
                     foreach (var deployable in cm.deployablesList)
@@ -2233,7 +2239,7 @@ localScale = new Vector3(1F, 1F, 1F)
                             }
                         }
                     }
-                }
+                }*/
             }
             private void UpdateOrbiter()
             {
@@ -2266,19 +2272,18 @@ localScale = new Vector3(1F, 1F, 1F)
                 {
                     LightningStrike();
                 }
-                if(orbiterTimer > 0)
+                /*if(orbiterTimer > 0)
                 {
                     orbiterTimer -= Time.deltaTime;
                 }
                 else
                 {
                     UpdateOrbiter();
-                }
+                }*/
             }
 
         }
     }
-
     internal class LunarRosary : ItemFactory
     {
         private static CharacterSpeechController.SpeechInfo[] brotherLunarRosaryReactions = new CharacterSpeechController.SpeechInfo[]

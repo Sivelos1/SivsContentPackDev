@@ -449,7 +449,7 @@ namespace SivsContentPack
             if (sender.HasBuff(Content.Buffs.LunarCorruption))
             {
                 int stacks = sender.GetBuffCount(Content.Buffs.LunarCorruption);
-                args.baseCurseAdd += (stacks * (Configuration.Items.LunarRosary.LunarCorruption.healthPenalty+1))/sender.maxHealth;
+                args.baseCurseAdd += (sender.maxHealth * (stacks * Configuration.Items.LunarRosary.LunarCorruption.healthPenalty))/ 100f;
                 args.moveSpeedReductionMultAdd += stacks * Configuration.Items.LunarRosary.LunarCorruption.movementPenalty;
                 args.damageMultAdd -= stacks * Configuration.Items.LunarRosary.LunarCorruption.movementPenalty;
 
@@ -728,15 +728,24 @@ namespace SivsContentPack
     }
     public class DeathImmunityBuff : BuffFactory
     {
+        protected static GameObject tempEffect;
         protected override void LoadAssets(ref BuffDef buffDef)
         {
             buffDef = Assets.AssetBundles.Items.LoadAsset<BuffDef>("bdDeathImmunity");
+            tempEffect = Assets.AssetBundles.Items.LoadAsset<GameObject>("DeathImmunityEffect");
+            TempVisualEffectAPI.AddTemporaryVisualEffect(tempEffect, new TempVisualEffectAPI.EffectCondition(target => { return target.HasBuff(Content.Buffs.DeathImmunity); }), true );
+        }
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matAngelFeather");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
         }
         protected override void Hooks()
         {
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
             On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
         }
+
 
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
         {
@@ -788,9 +797,32 @@ namespace SivsContentPack
         {
             base.Hooks();
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.CharacterModel.UpdateRendererMaterials += CharacterModel_UpdateRendererMaterials;
             On.RoR2.CharacterBody.OnBuffFirstStackGained += CharacterBody_OnBuffFirstStackGained;
             On.RoR2.CharacterBody.OnBuffFinalStackLost += CharacterBody_OnBuffFinalStackLost;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+        }
+
+        private void CharacterModel_UpdateRendererMaterials(On.RoR2.CharacterModel.orig_UpdateRendererMaterials orig, CharacterModel self, Renderer renderer, Material defaultMaterial, bool ignoreOverlays)
+        {
+            orig.Invoke(self, renderer, defaultMaterial, ignoreOverlays);
+            CharacterBody cb = self.body;
+            if (cb)
+            {
+                bool flag = cb.HasBuff(Content.Buffs.BossKillFrenzy);
+                if (flag)
+                {
+                    if (self.visibility == VisibilityLevel.Visible)
+                    {
+                        if (!ignoreOverlays)
+                        {
+                            Material[] array = renderer.sharedMaterials;
+                            ArrayUtils.ArrayAppend<Material>(ref array, in overlayMat);
+                            renderer.sharedMaterials = array;
+                        }
+                    }
+                }
+            }
         }
 
         private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)

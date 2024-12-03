@@ -1431,6 +1431,7 @@ localScale = new Vector3(0.2949F, 0.2949F, 0.2949F)
                 {
                     if (this.projectileInstance)
                     {
+
                         ProjectileOverlapAttack poa = projectileInstance.GetComponent<ProjectileOverlapAttack>();
                         if(poa != null)
                         {

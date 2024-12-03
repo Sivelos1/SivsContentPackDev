@@ -365,7 +365,6 @@ localScale = new Vector3(1F, 1F, 1F)
                 this.sphereSearch.RefreshCandidates();
                 TeamMask tm = new TeamMask();
                 tm.AddTeam(TeamComponent.GetObjectTeam(this.body.gameObject));
-
                 this.sphereSearch.FilterCandidatesByHurtBoxTeam(tm);
                 this.sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
                 this.sphereSearch.GetHurtBoxes(validTargets);

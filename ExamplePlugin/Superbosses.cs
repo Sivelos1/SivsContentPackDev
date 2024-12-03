@@ -808,7 +808,7 @@ localScale = new Vector3(9.3294F, 9.3294F, 9.3294F)
                 gameObject = PrefabAPI.InstantiateClone(master, "AurelioniteMaster");
                 ChampionComponent cc = gameObject.AddComponent<ChampionComponent>();
                 cc.characterNameToken = "CHAMPION_AURELIONITE_NAME";
-                cc.championType = ChampionType.Heretic;
+                cc.championType = ChampionType.Aurelionite;
                 cc.pickupList = new List<ChampionComponent.GrantedItem>
                 {
                     new ChampionComponent.GrantedItem()
@@ -1307,7 +1307,7 @@ localScale = new Vector3(9.3294F, 9.3294F, 9.3294F)
                     new ChampionComponent.GrantedItem()
                     {
                         pickupName = "MoreMissile",
-                        amount = 10
+                        amount = 1
                     },
                     new ChampionComponent.GrantedItem()
                     {

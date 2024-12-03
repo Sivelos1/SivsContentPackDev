@@ -49,6 +49,13 @@ namespace SivsContentPack
             unlockableDef = Assets.AssetBundles.Items.LoadAsset<UnlockableDef>("udGodMode");
         }
     }
+    public class UnlockLunarRosary : UnlockableFactory
+    {
+        protected override void LoadAssets(ref UnlockableDef unlockableDef)
+        {
+            unlockableDef = Assets.AssetBundles.Items.LoadAsset<UnlockableDef>("udLunarRosary");
+        }
+    }
     public class UnlockThunderAura : UnlockableFactory
     {
         protected override void LoadAssets(ref UnlockableDef unlockableDef)
@@ -138,6 +145,31 @@ namespace SivsContentPack
 
     }
 
+    [RegisterAchievement("UnlockLunarRosary", "udLunarRosary", null, 10U, null)]
+    public class LunarRosaryUnlockAchievement : BaseAchievement
+    {
+        public override void OnInstall()
+        {
+            base.OnInstall();
+            RoR2Application.onUpdate += this.CheckIfLunarRosaryObtained;
+        }
+
+        public override void OnUninstall()
+        {
+            RoR2Application.onUpdate -= this.CheckIfLunarRosaryObtained;
+            base.OnUninstall();
+        }
+
+        public void CheckIfLunarRosaryObtained()
+        {
+            if (base.localUser != null && base.localUser.cachedBody && base.localUser.cachedBody.inventory.GetItemCount(Content.Items.LunarRosary) > 0)
+            {
+                base.Grant();
+            }
+        }
+
+    }
+
     [RegisterAchievement("UnlockGodTier", "udBossShrine", null, 3U, null)]
     public class GodTierUnlockAchievement : BaseAchievement
     {
@@ -147,6 +179,7 @@ namespace SivsContentPack
             "UnlockGodMode",
             "UnlockThunderAura",
             "UnlockVoidEye",
+            "UnlockLunarRosary"
         };
         public override void OnInstall()
         {

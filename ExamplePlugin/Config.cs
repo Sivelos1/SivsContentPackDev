@@ -371,6 +371,13 @@ namespace SivsContentPack.Config
 
             }
 
+            public static class Egg
+            {
+                private static string text = "Cosmic Egg";
+                public static ConfigEntry<bool> enabled = config.Bind<bool>(itemEnabledSection, text, true, "Toggle to prevent this item from appearing.");
+                public static float cooldown = 77f;
+            }
+
             public static class BeetlePlush
             {
                 private static string text = "Workers Bond";
@@ -704,10 +711,9 @@ namespace SivsContentPack.Config
 
                 public static class LunarCorruption
                 {
-                    public static float healthPenalty = 5f;
-                    public static float damagePenalty = 0.05f;
+                    public static float healthPenalty = 0.025f;
+                    public static float damagePenalty = 0.1f;
                     public static float movementPenalty = 0.05f;
-
                     public static float cooldownPenalty = 0.25f;
                     public static float experienceGainPenalty = 0.25f;
                 }
@@ -715,7 +721,7 @@ namespace SivsContentPack.Config
                 public static class FullyCorrupted
                 {
                     public static float healthBonus = 0.25f;
-                    public static float damageBonus = 0.25f;
+                    public static float damageBonus = 0.125f;
                     public static float luckBonus = 0.25f;
                     public static float movementBonus = 0.1f;
 

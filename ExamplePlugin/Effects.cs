@@ -74,6 +74,20 @@ namespace SivsContentPack
 
         }
     }
+    public class DeathImmunityProc : EffectFactory
+    {
+        protected override void LoadAssets(ref EffectDef effectDef)
+        {
+            effectDef = new EffectDef();
+            this.prefab = Assets.AssetBundles.Items.LoadAsset<GameObject>("DeathImmunityProcEffect");
+            effectDef.prefab = this.prefab;
+        }
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matAngelEffect");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+        }
+    }
     public class TransformationComplete : EffectFactory
     {
         protected override void LoadAssets(ref EffectDef effectDef)

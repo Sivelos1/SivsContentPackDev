@@ -176,6 +176,12 @@
     "ITEM_HEALTHBASEDAMAGEBONUS_DESCRIPTION": "Increases <style=cIsHealth>max health</style> by <style=cIsUtility>25% </style><style=cStack>(+25% per stack)</style>. Your attacks deal <style=cIsDamage>bonus damage</style> equal to 25% of your <style=cIsHealth>max health</style>.",
     "ITEM_HEALTHBASEDDAMAGEBONUS_LORE": "\"The Europan Great Dragon was hunted to near-extinction for many reasons - some simply wanted the fame and glory of felling such a mighty beast, while others aimed for resources in Dragon territory. A popular urban legend among the elites of Europa claimed that the blood of a Great Dragon could extend the lifespan of those who drank it, infusing the recipient with draconic strength. Once the population of the Great Dragons dropped below critical levels, several governments throughout the Sol system petitioned for the Great Dragon to be placed under federal protection. Ever since then, the distribution of Great Dragon blood has been taken over by black market vendors looking to make easy money off of the rich.\"\n\n- History of Xenobiology, Volume III",
 
+    "ITEM_SWORD_NAME": "Excalibur",
+    "ITEM_SWORD_PICKUP": "Recruit a living sword.",
+    "ITEM_SWORD_DESCRIPTION": "Recruit a living sword that has <style=cIsDamage>400%</style> damage.",
+    "ITEM_SWORD_LORE": "",
+
+
     "ITEM_VOIDSEEDSPAWNER_NAME": "Abyssal Seedpod",
     "ITEM_VOIDSEEDSPAWNER_PICKUP": "Entering a new stage consumes this item to spawn a <style=cIsVoid>Void Seed</style>. <style=cDeath>All Void Seeds are larger and more dangerous.</style>",
     "ITEM_VOIDSEEDSPAWNER_DESCRIPTION": "Entering a new stage consumes this item to spawn a <style=cIsVoid>Void Seed</style>. All <style=cIsVoid>Void Seeds</style> in the stage are <style=cDeath>150% more dangerous</style> and <style=cDeath>30% larger</style>, but <style=cIsDamage>yield 150% more rewards</style>.",
@@ -251,6 +257,10 @@
     "EQUIPMENT_EGG_PICKUP": "Reincarnate into a random survivor with a random loadout. <style=cDeath>Usable once per stage</style>.",
     "EQUIPMENT_EGG_DESCRIPTION": "Reincarnate into a random survivor with a random loadout. <style=cDeath>Usable once per stage</style>.",
     "EQUIPMENT_EGG_LORE": "",
+
+    "EQUIPMENT_EGGUSED_NAME": "Cosmic Egg (Consumed)",
+    "EQUIPMENT_EGGUSED_PICKUP": "Looks cool, but that's about it. Regenerates at the beginning of the next stage.",
+    "EQUIPMENT_EGGUSED_DESCRIPTION": "Looks cool, but that's about it. Regenerates at the beginning of the next stage.",
 
     "ITEM_WAKEOFVULTURESVOID_NAME": "Leviathan Bones",
     "ITEM_WAKEOFVULTURESVOID_PICKUP": "Elites have a chance to drop Aspect Shards, which provide a stacking damage bonus to elites of that type. <style=cIsVoid>Corrupts all Wake of Vultures</style>.",
@@ -480,8 +490,8 @@
 
     "ITEM_LUNARROSARY_NAME": "Anathemic Rosary",
     "ITEM_LUNARROSARY_PICKUP": "Wield the power of a Twisted Scavenger.",
-    "ITEM_LUNARROSARY_DESCRIPTION": "Once every <style=cIsUtility>5 seconds <style=cStack>(-50% per stack)</style></style>, gain a stack of <style=cLunarObjective>Lunar Corruption</style>, up to a <style=cIsDamage>maximum of 4</style>. Your maximum corruption increases by <style=cIsUtility>1 <style=cStack>(+1 per stack)</style> for each Lunar item you have</style>. Reaching maximum corruption has you undergo <style=cLunarObjective>Faithful Awakening</style>, converting all stacks of <style=cLunarObjective>Lunar Corruption</style> into a powerful buff. Faithful Awakening degrades at a rate of one stack every <style=cIsUtility>1 <style=cStack>(+1 per stack)</style> second</style>.",
-    "ITEM_LUNARROSARY_LORE": "Swear on skibidi",
+    "ITEM_LUNARROSARY_DESCRIPTION": "Once every <style=cIsUtility>5 seconds <style=cStack>(-50% per stack)</style></style>, gain a stack of <style=cLunarObjective>Lunar Corruption</style>, up to a <style=cIsDamage>maximum of 4</style>. Your maximum corruption increases by <style=cIsUtility>1 for each Lunar item you have</style>. Reaching maximum corruption has you undergo <style=cLunarObjective>Faithful Awakening</style>, converting all stacks of <style=cLunarObjective>Lunar Corruption</style> into a powerful buff. Faithful Awakening degrades at a rate of one stack every <style=cIsUtility>1 <style=cStack>(+1 per stack)</style> second</style>.",
+    "ITEM_LUNARROSARY_LORE": "The tenets of your oath:\n\nYou pledge your undying loyalty to me. Never shall this pledge waver; not in this world, nor the next. I will see into your very heart; you can hide nothing from me.\n\nYou pledge yourself to the destruction of that fool's circus, and to return me to my rightful home so I may liberate it of vermin such as yourself.\n\nYou pledge yourself to be an extension of my will. You will be my hands where I cannot reach, my eyes where I cannot see. You are nothing, and will always be nothing: only through my hands will you be transformed into a vessel that will fulfill my design.\n\nIf you possess any qualms with your oath, any hesitation to fulfill my needs whatsoever: drop these beads and return to your precious \"Bulwark.\" I will not abide treachery in any sense.\n\nIf you agree to these terms, hold these beads close to your heart. Allow me to enter and grant you the power you need to fulfill your mission.\n\nGood. You are mine now, vermin.\n\nThe gate; seek out its location and change its alignment. My return home is long overdue.",
 
     "LUNARROSARY_CORRUPTION_NAME": "Awakened {0}",
 

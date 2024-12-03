@@ -47,7 +47,7 @@ namespace SivsContentPack
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Sivelos";
         public const string PluginName = "SivsContentPack";
-        public const string PluginVersion = "1.2.0";
+        public const string PluginVersion = "1.3.0";
         public const string ModPrefix = "@SivsContentPack:";
 
         public static PluginInfo PInfo { get; private set; }
@@ -59,7 +59,7 @@ namespace SivsContentPack
             // Init our logging class so that we can properly log for debugging
             Log.Init(Logger);
             PInfo = Info;
-            //On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
+            On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
             Configuration.config = new ConfigFile(Paths.ConfigPath + "\\"+PluginAuthor+"."+PluginName+".cfg", true);
             Assets.Init();
             Content.Init();

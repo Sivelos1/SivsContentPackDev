@@ -363,6 +363,15 @@ namespace SivsContentPack.Items
         private bool FireDeathImmunity(EquipmentSlot equipmentSlot)
         {
             CharacterBody body = equipmentSlot.characterBody;
+            EffectData ed = new EffectData()
+            {
+                origin = body.coreTransform.position,
+                start = body.coreTransform.position,
+                rootObject = body.gameObject,
+                rotation = Quaternion.identity,
+                scale = body.modelLocator.modelScaleCompensation
+            };
+            EffectManager.SpawnEffect(Content.Effects.DeathImmunityProc.prefab, ed, true);
             body.AddTimedBuff(Content.Buffs.DeathImmunity, Configuration.Items.DeathImmunity.buffDuration);
             return true;
         }
@@ -492,6 +501,111 @@ namespace SivsContentPack.Items
         }
 
     }
+
+
+    internal class Egg : EquipFactory
+    {
+        protected override void LoadAssets(ref EquipmentDef equipmentDef)
+        {
+            equipmentDef = Assets.AssetBundles.Items.LoadAsset<EquipmentDef>("Egg");
+        }
+
+        protected override bool CheckIfEnabled()
+        {
+            return Configuration.Items.Egg.enabled.Value;
+        }
+        protected override void HandleMaterials()
+        {
+            Material m = Assets.AssetBundles.Items.LoadAsset<Material>("matEgg");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matEggStar");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/FX/Cloud Remap");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matEggPlanet1");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matEggPlanet2");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+            m = Assets.AssetBundles.Items.LoadAsset<Material>("matEggPlanet3");
+            Materials.SubmitMaterialFix(m, "Hopoo Games/Deferred/Standard");
+        }
+        protected override void RegisterItemDisplayRules(ref ItemDisplayRuleDict itemDisplayRules)
+        {
+
+        }
+        protected override void Hooks()
+        {
+            On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
+        }
+
+        private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        {
+            if (equipmentDef == Content.Items.Egg)
+            {
+                Func<EquipmentSlot, bool> func = null;
+                func = new Func<EquipmentSlot, bool>(FireEgg);
+                return (func != null && func(self));
+            }
+            else
+            {
+                return orig.Invoke(self, equipmentDef);
+            }
+        }
+        private bool FireEgg(EquipmentSlot equipmentSlot)
+        {
+            CharacterBody body = equipmentSlot.characterBody;
+            body.level++;
+            body.OnLevelUp();
+            body.statsDirty = true;
+            equipmentSlot.equipmentIndex = Content.Items.EggUsed.equipmentIndex;
+            return true;
+        }
+
+    }
+
+    internal class EggUsed : EquipFactory
+    {
+        protected override void LoadAssets(ref EquipmentDef equipmentDef)
+        {
+            equipmentDef = Assets.AssetBundles.Items.LoadAsset<EquipmentDef>("EggUsed");
+        }
+
+        protected override bool CheckIfEnabled()
+        {
+            return Configuration.Items.Egg.enabled.Value;
+        }
+        protected override void HandleMaterials()
+        {
+
+        }
+        protected override void RegisterItemDisplayRules(ref ItemDisplayRuleDict itemDisplayRules)
+        {
+
+        }
+        protected override void Hooks()
+        {
+            On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
+        }
+
+        private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        {
+            if (equipmentDef == Content.Items.EggUsed)
+            {
+                Func<EquipmentSlot, bool> func = null;
+                func = new Func<EquipmentSlot, bool>(FireEggUsed);
+                return (func != null && func(self));
+            }
+            else
+            {
+                return orig.Invoke(self, equipmentDef);
+            }
+        }
+        private bool FireEggUsed(EquipmentSlot equipmentSlot)
+        {
+            
+            return true;
+        }
+
+    }
+
     internal class ChargingLaser : EquipFactory
     {
 

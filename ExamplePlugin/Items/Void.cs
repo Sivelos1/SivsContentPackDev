@@ -43,7 +43,6 @@ namespace SivsContentPack.Items
         }
         protected override void SetUpItemRelationships(ref ItemDef itemDef)
         {
-
             ItemDef soda = Addressables.LoadAssetAsync<ItemDef>("RoR2/Base/SprintBonus/SprintBonus.asset").WaitForCompletion();
             if (soda != null)
             {

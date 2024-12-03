@@ -14,9 +14,9 @@
     "CHAMPION_SUBTITLE_GENERIC": "Hero of Petrichor V",
     "CHAMPION_SUBTITLE_IMP": "Ambassador of the Red Plane",
     "CHAMPION_SUBTITLE_LUNAR": "Magnum Opus",
-    "CHAMPION_SUBTITLE_VOID": "Cell Keeper",
+    "CHAMPION_SUBTITLE_VOID": "Cosmic Warden",
     "CHAMPION_SUBTITLE_HERETIC": "Banished",
-    "CHAMPION_SUBTITLE_AURELIONITE": "Goldweaver's Rage",
+    "CHAMPION_SUBTITLE_AURELIONITE": "Goldweaver's Retribution",
 
     "CHAMPION_KILLERBEETLE_NAME": "The Horror",
     "CHAMPION_ARMOREDHALCYONITE_NAME": "Shield of Aurelionite",
@@ -28,6 +28,7 @@
     "CHAMPION_DEATHURCHIN_NAME": "Star of N'kuhana",
     "CHAMPION_SNIPERHERMIT_NAME": "Shelled Artillery",
     "CHAMPION_HERETIC_NAME": "Kur'skan the Heretic",
+    "CHAMPION_AURELIONITE_NAME": "Aurelionite, Unchained",
 
 
     "CHARACTER_KINGBODY_NAME": "King",
@@ -96,6 +97,12 @@
 
     "CHARACTER_BEAMGOLEM_NAME": "Marble Golem",
     "CHARACTER_BEAMGOLEM_LORE": "",
+
+    "CHARACTER_VOIDLET_NAME": "Void Crawler",
+    "CHARACTER_VOIDLET_LORE": "",
+
+    "CHARACTER_SENTRY_NAME": "Stone Sentry",
+    "CHARACTER_SENTRY_LORE": "",
 
     "SKILL_FALSESON_LUNARLIGHTNING_NAME": "Wrath of the Son",
     "SKILL_FALSESON_LUNARLIGHTNING_DESCRIPTION": "Call forth a lightning storm, striking nearby enemies with lightning for 800%, inflicting Lunar Ruin, and recovering Lunar Spikes on hit. The storm's duration and ferocity increase with Growth."

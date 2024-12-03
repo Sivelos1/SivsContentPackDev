@@ -507,6 +507,8 @@ namespace SivsContentPack
 
                 new VoidSeedSpawner().Init(ref Content.Items.VoidSeedSpawner);
                 new Monocle().Init(ref Content.Items.Monocle);
+                //new Egg().Init(ref Content.Items.Egg);
+                //new EggUsed().Init(ref Content.Items.EggUsed);
                 new ChimeraArmor().Init(ref Content.Items.ChimeraArmor);
                 new ChimeraCooldown().Init(ref Content.Items.ChimeraCooldown);
                 new ChimeraCrit().Init(ref Content.Items.ChimeraCrit);
@@ -623,6 +625,8 @@ namespace SivsContentPack
             public static ItemDef Monocle;
             public static ItemDef Chimera;
             public static ItemDef Grudge;
+            public static EquipmentDef Egg;
+            public static EquipmentDef EggUsed;
 
 
             public static ItemDef ChimeraHealth;
@@ -850,6 +854,7 @@ namespace SivsContentPack
                 new FireEyeOrb().Init(ref Content.Effects.FireEyeOrb);
                 new FireEyeProcEffect().Init(ref Content.Effects.FireEyeProc);
                 new WispOnHitMuzzleFlash().Init(ref Content.Effects.MiniWispMuzzleFlash);
+                new DeathImmunityProc().Init(ref Content.Effects.DeathImmunityProc);
                 new WispOnHitImpact().Init(ref Content.Effects.MiniWispImpact);
                 new SingularityBlast().Init(ref Content.Effects.SingularityBlast);
                 new TarLifeStealOrbFX().Init(ref Content.Effects.TarLifeStealOrb);
@@ -876,6 +881,7 @@ namespace SivsContentPack
             public static EffectDef VoidMineFX;
             public static EffectDef TarLifeStealOrb;
             public static EffectDef SmiteFX;
+            public static EffectDef DeathImmunityProc;
             public static EffectDef ThunderAuraOrbiterImpact;
             public static EffectDef ThunderAuraLightning;
             public static EffectDef FireEyeOrb;
@@ -937,6 +943,7 @@ namespace SivsContentPack
                 new UnlockGodMode().Init(ref Content.Unlockables.UnlockGodMode);
                 new UnlockVoidEye().Init(ref Content.Unlockables.UnlockVoidEye);
                 new UnlockThunderAura().Init(ref Content.Unlockables.UnlockThunderAura);
+                new UnlockLunarRosary().Init(ref Content.Unlockables.UnlockLunarRosary);
             }
 
             public static UnlockableDef UnlockSpecializedItems;
@@ -944,6 +951,7 @@ namespace SivsContentPack
             public static UnlockableDef UnlockThunderAura;
             public static UnlockableDef UnlockVoidEye;
             public static UnlockableDef UnlockGodTier;
+            public static UnlockableDef UnlockLunarRosary;
         }
         public static class SceneDefs
         {
